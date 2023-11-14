@@ -56,14 +56,7 @@ export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styl
       <ConditionalLink currentLink={currentLink} isLink={isLink} post={post} setCurrentLink={setCurrentLink} />
 
       <div className="summary__inner">
-        <Image
-          alt={post.title}
-          height={289 / aspectRatio}
-          priority={post.slug.current === 'about'}
-          src={sanityImageUrl(post.thumbnailImage)}
-          style={{ aspectRatio }}
-          width={289}
-        />
+        <Image alt={post.title} height={289 / aspectRatio} priority src={sanityImageUrl(post.thumbnailImage)} style={{ aspectRatio }} width={289} />
 
         <Title isTitleInBody={post.titleInBody} title={post.title} />
 
