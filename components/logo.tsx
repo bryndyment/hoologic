@@ -26,7 +26,7 @@ const LOGO = (
 export const Logo: FC<_LogoProps> = ({ pathname }) => {
   const { setPostPosition } = useAppContext()
 
-  const handleClick = () => setPostPosition((document.querySelector(`.summary__link[href="${PATHNAME_ABOUT}"]`) as Element).getBoundingClientRect())
+  const handleClick = () => setPostPosition({ left: -314, top: 114 })
 
   if (pathname === PATHNAME_ABOUT) {
     return <span className="icon icon__logo icon__logo--current">{LOGO}</span>
