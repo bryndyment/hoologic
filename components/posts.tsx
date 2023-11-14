@@ -1,7 +1,7 @@
 'use client'
 
 import { Summary } from '@/components/summary'
-import { PATHNAME_BRYN } from '@/utilities/common'
+import { PATHNAME_BRYN } from '@/utilities/constants'
 import type { _Post } from '@/utilities/types'
 import { useWindowSize } from '@react-hook/window-size'
 import { usePathname } from 'next/navigation'

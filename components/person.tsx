@@ -1,5 +1,5 @@
 import { useAppContext } from '@/hooks/useAppContext'
-import { PATHNAME_BRYN } from '@/utilities/common'
+import { PATHNAME_BRYN } from '@/utilities/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'

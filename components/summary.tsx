@@ -1,4 +1,4 @@
-import { SERIALIZERS } from './common'
+import { SERIALIZERS } from '@/components/serializers'
 import { useAppContext } from '@/hooks/useAppContext'
 import { sanityImageUrl } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
@@ -19,20 +19,18 @@ type _TitleProps = { isTitleInBody: boolean; title: string }
 // components
 
 const ConditionalLink: FC<_ConditionalLinkProps> = ({ currentLink, isLink, post, setCurrentLink }) => {
+  const { setPostPosition } = useAppContext()
+
   const classes = () => classNames('summary__link', { 'summary__link--current': post.slug.current === currentLink })
 
   const handleClick = ({ currentTarget }: MouseEvent<HTMLAnchorElement>) => {
-    if (currentTarget.parentNode !== document.querySelector('.post:first-child')) {
-      const position = currentTarget.getBoundingClientRect()
+    const position = currentTarget.getBoundingClientRect()
 
-      setPostPosition({ left: position.left - 3, top: position.top })
-    }
+    setPostPosition({ left: position.left - 3, top: position.top })
   }
 
   const handleMouseOver = ({ currentTarget }: MouseEvent<HTMLAnchorElement>) =>
     setCurrentLink((currentTarget.href.match(/^https?:\/\/[^/]+(.*)/) as RegExpMatchArray)[1])
-
-  const { setPostPosition } = useAppContext()
 
   if (!isLink) return null
 

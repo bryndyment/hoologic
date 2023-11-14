@@ -1,4 +1,4 @@
-import { DATASET, PROJECT_ID } from '@/utilities/common'
+import { DATASET, PROJECT_ID } from '@/utilities/constants'
 import imageUrlBuilder from '@sanity/image-url'
 import { createClient } from 'next-sanity'
 

@@ -1,7 +1,7 @@
 'use client'
 
-import { SERIALIZERS } from './common'
-import { Summary } from './summary'
+import { SERIALIZERS } from '@/components/serializers'
+import { Summary } from '@/components/summary'
 import { useAppContext } from '@/hooks/useAppContext'
 import type { _Position, _Post } from '@/utilities/types'
 import { PortableText } from '@portabletext/react'

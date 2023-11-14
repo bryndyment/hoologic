@@ -1,5 +1,5 @@
 import { Post } from '@/components/post'
-import { POSTS_QUERY } from '@/utilities/common'
+import { POSTS_QUERY } from '@/utilities/constants'
 import { SANITY_CLIENT } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
 import type { Metadata } from 'next/types'

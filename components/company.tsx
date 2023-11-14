@@ -1,4 +1,4 @@
-import { PATHNAME_HOME } from '@/utilities/common'
+import { PATHNAME_HOME } from '@/utilities/constants'
 import { NOTO_SANS_JP } from '@/utilities/fonts'
 import { Box } from '@mui/material'
 import Link from 'next/link'

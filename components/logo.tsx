@@ -1,5 +1,5 @@
 import { useAppContext } from '@/hooks/useAppContext'
-import { PATHNAME_ABOUT } from '@/utilities/common'
+import { PATHNAME_ABOUT } from '@/utilities/constants'
 import Link from 'next/link'
 import { FC } from 'react'
 
