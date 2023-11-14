@@ -1,11 +1,11 @@
 'use client'
 
 import { Summary } from '@/components/summary'
-import { PATHNAME_BRYN } from '@/utilities/constants'
+import { PATHNAME_PERSON, PATHNAME_ROOT } from '@/utilities/constants'
 import type { _Post } from '@/utilities/types'
 import { useWindowSize } from '@react-hook/window-size'
 import { usePathname } from 'next/navigation'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import Masonry from 'react-masonry-component'
 
 // types
@@ -41,11 +41,14 @@ export const Posts: FC<_PostsProps> = ({ posts: initialPosts }) => {
 
   useEffect(() => (masonryRef.current as any).masonry.layout(), [masonryRef, size])
 
-  const updatedPosts = pathname === PATHNAME_BRYN ? posts : posts.slice(0, -1)
+  const filteredPosts = useMemo(
+    () => (pathname === PATHNAME_PERSON ? posts : pathname === PATHNAME_ROOT ? [posts[posts.length - 1], ...posts.slice(0, -1)] : posts.slice(0, -1)),
+    [pathname, posts]
+  )
 
   return (
     <Masonry className={mounted} ref={masonryRef}>
-      {updatedPosts.map(post => (
+      {filteredPosts.map(post => (
         <Summary classes="summary" isLink key={post._id} post={post} />
       ))}
     </Masonry>

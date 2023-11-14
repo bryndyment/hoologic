@@ -1,5 +1,5 @@
 import { useAppContext } from '@/hooks/useAppContext'
-import { PATHNAME_BRYN } from '@/utilities/constants'
+import { PATHNAME_PERSON } from '@/utilities/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -19,12 +19,12 @@ export const Person: FC<_PersonProps> = ({ pathname }) => {
 
   const handleClick = () => setPostPosition({ left: -314, top: 114 })
 
-  if (pathname === PATHNAME_BRYN) {
+  if (pathname === PATHNAME_PERSON) {
     return <span className="icon icon__profile icon__profile--current">{PERSON}</span>
   }
 
   return (
-    <Link className="icon icon__profile" href={PATHNAME_BRYN} onClick={handleClick}>
+    <Link className="icon icon__profile" href={PATHNAME_PERSON} onClick={handleClick}>
       {PERSON}
     </Link>
   )

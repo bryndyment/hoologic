@@ -21,7 +21,7 @@ type _TitleProps = { isTitleInBody: boolean; title: string }
 const ConditionalLink: FC<_ConditionalLinkProps> = ({ currentLink, isLink, post, setCurrentLink }) => {
   const { setPostPosition } = useAppContext()
 
-  const classes = () => classNames('summary__link', { 'summary__link--current': post.slug.current === currentLink })
+  const classes = () => classNames('summary__link', { 'summary__link--current': post.slug.current === currentLink.slice(1) })
 
   const handleClick = ({ currentTarget }: MouseEvent<HTMLAnchorElement>) => {
     const position = currentTarget.getBoundingClientRect()
