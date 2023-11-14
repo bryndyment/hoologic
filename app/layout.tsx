@@ -8,6 +8,7 @@ import { POSTS_QUERY } from '@/utilities/constants'
 import { SANITY_CLIENT } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
 import { CssBaseline } from '@mui/material'
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { FC, ReactNode } from 'react'
 
@@ -44,6 +45,8 @@ const RootLayout: FC<_RootLayoutProps> = async ({ children }) => {
             </div>
           </AppContextProvider>
         </ThemeContextProvider>
+
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
