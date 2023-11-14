@@ -4,6 +4,7 @@ import { Summary } from '@/components/summary'
 import { PATHNAME_PERSON, PATHNAME_ROOT } from '@/utilities/constants'
 import type { _Post } from '@/utilities/types'
 import { useWindowSize } from '@react-hook/window-size'
+import classNames from 'classnames'
 import { usePathname } from 'next/navigation'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import Masonry from 'react-masonry-component'
@@ -26,8 +27,13 @@ const useHooks = (initialPosts: _Post[]) => {
 export const Posts: FC<_PostsProps> = ({ posts: initialPosts }) => {
   const { masonryRef, posts, setPosts } = useHooks(initialPosts)
   const pathname = usePathname()
-  const [mounted, setMounted] = useState('posts')
+  const isPostPageRef = useRef(false)
+  const [isMounted, setIsMounted] = useState(false)
   const size = useWindowSize()
+
+  useEffect(() => {
+    isPostPageRef.current = pathname !== PATHNAME_ROOT
+  }, [pathname])
 
   useEffect(() => {
     const postIndex = posts.findIndex(post => post.slug.current === pathname.slice(1))
@@ -35,9 +41,9 @@ export const Posts: FC<_PostsProps> = ({ posts: initialPosts }) => {
     if (postIndex !== -1 && postIndex !== posts.length - 1) {
       setPosts(posts.filter((_, index) => index !== postIndex).concat(posts[postIndex]))
     }
-  }, [mounted, pathname, posts, setPosts])
+  }, [pathname, posts, setPosts])
 
-  useEffect(() => setMounted('posts posts--mounted'), [])
+  useEffect(() => setIsMounted(true), [])
 
   useEffect(() => (masonryRef.current as any).masonry.layout(), [masonryRef, size])
 
@@ -47,8 +53,8 @@ export const Posts: FC<_PostsProps> = ({ posts: initialPosts }) => {
   )
 
   return (
-    <Masonry className={mounted} ref={masonryRef}>
-      {filteredPosts.map(post => (
+    <Masonry className={classNames('posts', { 'posts posts--mounted': isMounted })} ref={masonryRef}>
+      {(isPostPageRef.current ? filteredPosts : posts).map(post => (
         <Summary classes="summary" isLink key={post._id} post={post} />
       ))}
     </Masonry>
