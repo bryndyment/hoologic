@@ -24,7 +24,7 @@ export const THEME = createTheme({
     }
   },
   typography: {
-    fontFamily: 'lucida grande, lucida sans, sans-serif',
+    fontFamily: 'lucida grande, lucida sans, -apple-system, sans-serif',
     fontSize: 21 * 16
   }
 })
