@@ -61,13 +61,15 @@ header { margin-bottom: 32px; }
     &--japan { display: none; }
   }
 
-  .name--logic { display: none; }
+  .name::after { content: '株'; }
 }
 
 // two columns
 
 @media (max-width: 959px) and (min-width: 640px) {
   .all--home { width: 640px; }
+
+  .name::after { content: ' 株'; }
 }
 
 // three columns

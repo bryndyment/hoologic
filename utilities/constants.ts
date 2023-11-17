@@ -6,3 +6,5 @@ export const PATHNAME_ABOUT = '/about'
 export const PATHNAME_PERSON = '/bryn'
 export const PATHNAME_ROOT = '/'
 export const PROJECT_ID = 'w9bqr9i3'
+
+export const zMobileMediaQuery = '@media (max-width: 639px)'
