@@ -2,6 +2,7 @@ import { SERIALIZERS } from '@/components/serializers'
 import { useAppContext } from '@/hooks/useAppContext'
 import { sanityImageUrl } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
+import { Box } from '@mui/material'
 import { PortableText } from '@portabletext/react'
 import { getImageDimensions } from '@sanity/asset-utils'
 import classNames from 'classnames'
@@ -39,9 +40,9 @@ const ConditionalLink: FC<_ConditionalLinkProps> = ({ currentLink, isLink, post,
 
 const Description: FC<_DescriptionProps> = ({ description }) =>
   description && (
-    <div className="summary__description">
+    <Box className="summary__description">
       <PortableText components={SERIALIZERS} value={description} />
-    </div>
+    </Box>
   )
 
 export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styles }) => {
@@ -52,17 +53,17 @@ export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styl
   const handleMouseLeave = () => setCurrentLink('')
 
   return (
-    <div className={classes} onMouseLeave={handleMouseLeave} style={styles}>
+    <Box className={classes} onMouseLeave={handleMouseLeave} style={styles}>
       <ConditionalLink currentLink={currentLink} isLink={isLink} post={post} setCurrentLink={setCurrentLink} />
 
-      <div className="summary__inner">
+      <Box className="summary__inner">
         <Image alt={post.title} height={289 / aspectRatio} priority src={sanityImageUrl(post.thumbnailImage)} style={{ aspectRatio }} width={289} />
 
         <Title isTitleInBody={post.titleInBody} title={post.title} />
 
         <Description description={post.description} />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

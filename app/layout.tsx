@@ -7,7 +7,7 @@ import '@/styles/index.scss'
 import { POSTS_QUERY } from '@/utilities/constants'
 import { SANITY_CLIENT } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
-import { CssBaseline } from '@mui/material'
+import { Box, CssBaseline } from '@mui/material'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { FC, ReactNode } from 'react'
@@ -34,7 +34,7 @@ const RootLayout: FC<_RootLayoutProps> = async ({ children }) => {
           <CssBaseline />
 
           <AppContextProvider>
-            <div className="all all--home">
+            <Box className="all all--home">
               <Header />
 
               {children}
@@ -42,7 +42,7 @@ const RootLayout: FC<_RootLayoutProps> = async ({ children }) => {
               <Posts posts={posts.filter(post => post.visible)} />
 
               <Footer />
-            </div>
+            </Box>
           </AppContextProvider>
         </ThemeContextProvider>
 

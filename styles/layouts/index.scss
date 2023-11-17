@@ -1,9 +1,9 @@
-footer, header { display: flex; height: 50px; justify-content: space-between; margin: 0 auto; transition: opacity 0.67s; white-space: nowrap; }
+footer, header { display: flex; height: 50px; justify-content: space-between; margin: 0 auto 0 0; transition: opacity 0.67s, width 0.2s; white-space: nowrap; width: 960px; }
 
 header { margin-bottom: 32px; }
 
 .all {
-  margin: 0 auto; padding: 32px 0; transition: width 0.5s;
+  margin: 0 auto; padding: 32px 0;
 
   &--home { width: 960px; }
 }
@@ -53,7 +53,7 @@ header { margin-bottom: 32px; }
 // one column
 
 @media (max-width: 639px) {
-  .all--home { width: 320px; }
+  footer, header, .all--home { width: 320px; }
 
   .location { margin-right: 0;
     &::after { content: 'JP'; }
@@ -67,7 +67,7 @@ header { margin-bottom: 32px; }
 // two columns
 
 @media (max-width: 959px) and (min-width: 640px) {
-  .all--home { width: 640px; }
+  footer, header, .all--home { width: 640px; }
 
   .name::after { content: ' 株'; }
 }

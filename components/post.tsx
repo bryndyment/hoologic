@@ -4,6 +4,7 @@ import { SERIALIZERS } from '@/components/serializers'
 import { Summary } from '@/components/summary'
 import { useAppContext } from '@/hooks/useAppContext'
 import type { _Position, _Post } from '@/utilities/types'
+import { Box } from '@mui/material'
 import { PortableText } from '@portabletext/react'
 import React, { FC, useEffect, useState } from 'react'
 
@@ -61,14 +62,14 @@ const Css: FC<_CssProps> = ({ css }) => (css ? <style>{css}</style> : null)
 
 const Extra: FC<_ExtraProps> = ({ mounted, post, postPosition }) =>
   post.extra ? (
-    <div className={getClasses('extra', mounted, postPosition)}>
-      <div className="extra__div">
+    <Box className={getClasses('extra', mounted, postPosition)}>
+      <Box className="extra__div">
         <PortableText components={SERIALIZERS} value={post.extra} />
-      </div>
-    </div>
+      </Box>
+    </Box>
   ) : null
 
-const Html: FC<_HtmlProps> = ({ html }) => (html ? <div dangerouslySetInnerHTML={{ __html: html }} /> : null)
+const Html: FC<_HtmlProps> = ({ html }) => (html ? <Box dangerouslySetInnerHTML={{ __html: html }} /> : null)
 
 const Title: FC<_TitleProps> = ({ title, titleInBody }) => (titleInBody ? <h2 className="detail__heading">{title}</h2> : null)
 
@@ -89,14 +90,14 @@ export const Post: FC<_PostProps> = ({ post }) => {
 
   return (
     <>
-      <div className="detail">
+      <Box className="detail">
         <Css css={post.css} />
 
         <Summary classes={getClasses('summary', mounted, postPosition)} post={post} styles={styles(mounted, postPosition)} />
 
         <Extra mounted={mounted} post={post} postPosition={postPosition} />
 
-        <div className={getClasses('detail__content', mounted, postPosition, post.centerBody)}>
+        <Box className={getClasses('detail__content', mounted, postPosition, post.centerBody)}>
           <Title title={post.title} titleInBody={post.titleInBody} />
 
           <Block blocks={post.body} />
@@ -108,8 +109,8 @@ export const Post: FC<_PostProps> = ({ post }) => {
           <Html html={post.htmlTwo} />
 
           <Block blocks={post.bodyThree} />
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   )
 }

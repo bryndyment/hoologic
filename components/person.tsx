@@ -1,5 +1,6 @@
 import { useAppContext } from '@/hooks/useAppContext'
 import { PATHNAME_PERSON } from '@/utilities/constants'
+import { Box } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -20,7 +21,11 @@ export const Person: FC<_PersonProps> = ({ pathname }) => {
   const handleClick = () => setPostPosition({ left: -314, top: 114 })
 
   if (pathname === PATHNAME_PERSON) {
-    return <span className="icon icon__profile icon__profile--current">{PERSON}</span>
+    return (
+      <Box className="icon icon__profile icon__profile--current" component="span">
+        {PERSON}
+      </Box>
+    )
   }
 
   return (

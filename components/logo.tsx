@@ -1,5 +1,6 @@
 import { useAppContext } from '@/hooks/useAppContext'
 import { PATHNAME_ABOUT } from '@/utilities/constants'
+import { Box } from '@mui/material'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -29,7 +30,11 @@ export const Logo: FC<_LogoProps> = ({ pathname }) => {
   const handleClick = () => setPostPosition({ left: -314, top: 114 })
 
   if (pathname === PATHNAME_ABOUT) {
-    return <span className="icon icon__logo icon__logo--current">{LOGO}</span>
+    return (
+      <Box className="icon icon__logo icon__logo--current" component="span">
+        {LOGO}
+      </Box>
+    )
   }
 
   return (

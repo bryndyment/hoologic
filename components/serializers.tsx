@@ -1,4 +1,5 @@
 import { sanityImageUrl } from '@/utilities/sanity'
+import { Box } from '@mui/material'
 import { getImageDimensions } from '@sanity/asset-utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -36,7 +37,7 @@ const InternalLinkSerializer: FC<_InternalLinkSerializerProps> = ({ children, va
 const MailtoSerializer: FC<_MailtoSerializerProps> = ({ children, value }) =>
   value ? <a href={`mailto:${value.email || 'info@hoologic.io'}`}>{children}</a> : null
 
-const SpanSerializer: FC<_SpanSerializerProps> = ({ children }) => <span>{children}</span>
+const SpanSerializer: FC<_SpanSerializerProps> = ({ children }) => <Box component="span">{children}</Box>
 
 // constants
 
