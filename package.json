@@ -14,7 +14,8 @@
     "next": "14.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-masonry-component": "6.3.0"
+    "react-masonry-component": "6.3.0",
+    "sharp": "0.32.6"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "14.0.3",

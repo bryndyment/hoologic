@@ -20,7 +20,7 @@ export const THEME = createTheme({
   },
   palette: {
     background: {
-      default: '#fae1e6'
+      default: '#f6e7e5'
     }
   },
   typography: {

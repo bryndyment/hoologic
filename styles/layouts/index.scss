@@ -13,7 +13,7 @@ header { margin-bottom: 32px; }
 .icon {
   margin: 0 3px;
 
-  &__image { border-radius: 2px; }
+  &__image { border-radius: 2px; height: 50px; width: 50px; }
 
   &__logo {
     &-background, &-l { transition: fill 0.1s; }

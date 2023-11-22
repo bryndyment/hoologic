@@ -14,7 +14,7 @@
 
     a { pointer-events: auto; }
 
-    img { width: 100%; }
+    img { height: auto; width: 100%; }
   }
 
   &__link { border-radius: 2px; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; }

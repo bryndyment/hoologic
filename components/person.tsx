@@ -1,4 +1,5 @@
 import { useAppContext } from '@/hooks/useAppContext'
+import profileImage from '@/public/profile.png'
 import { PATHNAME_PERSON } from '@/utilities/constants'
 import { Box } from '@mui/material'
 import Image from 'next/image'
@@ -11,7 +12,7 @@ type _PersonProps = { pathname: string }
 
 // constants
 
-const PERSON = <Image alt="Bryn Dyment" className="icon__image" height="50" src="/profile.png" unoptimized width="50" />
+const PERSON = <Image alt="Bryn Dyment" className="icon__image" src={profileImage} />
 
 // components
 

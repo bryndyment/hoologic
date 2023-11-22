@@ -48,7 +48,7 @@ const Description: FC<_DescriptionProps> = ({ description }) =>
 export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styles }) => {
   const [currentLink, setCurrentLink] = useState('')
 
-  const { aspectRatio } = getImageDimensions(post.thumbnailImage)
+  const { height, width } = getImageDimensions(post.thumbnailImage)
 
   const handleMouseLeave = () => setCurrentLink('')
 
@@ -57,7 +57,7 @@ export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styl
       <ConditionalLink currentLink={currentLink} isLink={isLink} post={post} setCurrentLink={setCurrentLink} />
 
       <Box className="summary__inner">
-        <Image alt={post.title} height={289 / aspectRatio} priority src={sanityImageUrl(post.thumbnailImage)} style={{ aspectRatio }} width={289} />
+        <Image alt={post.title} height={height} src={sanityImageUrl(post.thumbnailImage)} width={width} />
 
         <Title isTitleInBody={post.titleInBody} title={post.title} />
 

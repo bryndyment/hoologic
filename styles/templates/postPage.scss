@@ -1,5 +1,4 @@
-.detail {
-  margin: 0 auto; padding: 0 3px 32px; width: 960px;
+.detail { margin: 0 auto; padding: 0 3px 32px; width: 960px;
 
   &::after { clear: both; content: ''; display: table; }
 
@@ -13,23 +12,16 @@
     & { width: 640px; }
   }
 
-  &__content {
-    background: #fff; border: 0.5px solid #000; border-radius: 2px; height: 634px; margin-left: 320px; max-height: 634px; overflow-y: scroll; padding: 12px; width: 634px;
+  &__content { background: #fff; border: 0.5px solid #000; border-radius: 2px; height: 634px; margin-left: 320px; max-height: 634px; overflow-y: scroll; padding: 12px; width: 634px;
 
-    & > div {
-      margin-top: 24px;
+    > div { margin-top: 24px;
 
       &:first-child { margin-top: 0; }
     }
 
-    & figure {
-      margin: 12px 0 0;
+    > img { height: auto; width: 100%; }
 
-      &:first-child { margin-top: 0; }
-    }
-
-    & p {
-      margin: 12px 0 24px;
+    p { margin: 12px 0 24px;
 
       &:first-child { margin-top: 0; }
     }

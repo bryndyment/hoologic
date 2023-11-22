@@ -27,9 +27,9 @@ const ExternalLinkSerializer: FC<_ExternalLinkSerializerProps> = ({ children, va
   ) : null
 
 const ImageSerializer: FC<_ImageSerializerProps> = ({ value }) => {
-  const { aspectRatio } = getImageDimensions(value)
+  const { height, width } = getImageDimensions(value)
 
-  return <Image alt="" height={609 / aspectRatio} src={sanityImageUrl(value)} style={{ aspectRatio }} width={609} />
+  return <Image alt="" height={height} src={sanityImageUrl(value)} width={width} />
 }
 
 const InternalLinkSerializer: FC<_InternalLinkSerializerProps> = ({ children, value }) => (value ? <Link href={value.slug}>{children}</Link> : null)
