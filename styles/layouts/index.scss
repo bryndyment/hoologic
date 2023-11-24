@@ -38,11 +38,11 @@ header { margin-bottom: 32px; }
   &--city { right: 2px; }
 }
 
-.location, .name { color: #fff; font-size: 81rem; text-shadow: -0.5px 0 #000, 0 0.5px #000, 0.5px 0 #000, 0 -0.5px #000; text-transform: uppercase; }
+.location, .name { color: #fff; font-size: 65px; text-shadow: -0.5px 0 #000, 0 0.5px #000, 0.5px 0 #000, 0 -0.5px #000; text-transform: uppercase; }
 
 .location, .name--interior { transition: color 0.1s; }
 
-.location--city, .name::after { bottom: 3px; color: #eee; font-size: 71rem; position: relative; }
+.location--city, .name::after { bottom: 3px; font-size: 57px; position: relative; }
 
 .name {
   margin-left: -2.5px;

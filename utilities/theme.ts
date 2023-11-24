@@ -1,6 +1,7 @@
 'use client'
 
 import { createTheme } from '@mui/material'
+import { blueGrey } from '@mui/material/colors'
 
 // constants
 
@@ -8,23 +9,13 @@ export const THEME = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        body: {
-          WebkitFontSmoothing: 'auto',
-          fontSize: '21rem'
-        },
-        html: {
-          fontSize: 0.8
-        }
+        '*': { userSelect: 'none' },
+        '*:focus': { outline: 'none' },
+        body: { WebkitFontSmoothing: 'auto' },
+        'li, p': { fontSize: 14.5 }
       }
     }
   },
-  palette: {
-    background: {
-      default: '#f6e7e5'
-    }
-  },
-  typography: {
-    fontFamily: 'lucida grande, lucida sans, -apple-system, sans-serif',
-    fontSize: 21 * 16
-  }
+  palette: { background: { default: blueGrey[50] } },
+  typography: { fontFamily: 'lucida grande, lucida sans, -apple-system, sans-serif' }
 })

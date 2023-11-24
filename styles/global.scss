@@ -1,13 +1,7 @@
-*:focus { outline: none; }
-
-a, div, img, li, p, ul { user-select: none; }
-
 blockquote, body, div, footer, form, h1, h2, h3, h4, h5, header, html, input, li, ol, p, select, table, textarea, ul { box-sizing: border-box; line-height: 0.65; margin: 0; padding: 0; }
 
 a { color: #000; text-decoration: none; }
 img { display: block; }
-
-a, li, p { font-size: 18rem; }
 
 li, p {
   line-height: 1.4; margin-bottom: 7px;
