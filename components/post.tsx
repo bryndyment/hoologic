@@ -6,7 +6,7 @@ import { useAppContext } from '@/hooks/useAppContext'
 import type { _Position, _Post } from '@/utilities/types'
 import { Box } from '@mui/material'
 import { PortableText } from '@portabletext/react'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, RefObject, useEffect, useState } from 'react'
 
 // types
 
@@ -32,8 +32,10 @@ const getClasses = (item: string, mounted: boolean, postPosition?: _Position, ce
   return classes
 }
 
-const getLeftOffset = () => {
-  const width = (document.getElementsByClassName('all')[0] as HTMLDivElement).offsetWidth
+const getLeftOffset = (allRef: RefObject<HTMLDivElement>) => {
+  if (!allRef.current) return 0
+
+  const width = allRef.current.offsetWidth
 
   if (document.body.offsetWidth < width) {
     return 0
@@ -42,10 +44,10 @@ const getLeftOffset = () => {
   return `${(document.body.offsetWidth - width) / 2}px`
 }
 
-const styles = (mounted: boolean, postPosition?: _Position) => {
+const styles = (allRef: RefObject<HTMLDivElement>, mounted: boolean, postPosition?: _Position) => {
   if (postPosition) {
     if (mounted) {
-      return { left: getLeftOffset(), top: '114px' }
+      return { left: getLeftOffset(allRef), top: '114px' }
     }
 
     return { left: `${postPosition.left}px`, top: `${postPosition.top}px` }
@@ -76,7 +78,7 @@ const Title: FC<_TitleProps> = ({ title, titleInBody }) => (titleInBody ? <h2 cl
 // components
 
 export const Post: FC<_PostProps> = ({ post }) => {
-  const { postPosition, setPostPosition } = useAppContext()
+  const { allRef, postPosition, setPostPosition } = useAppContext()
 
   const [mounted, setMounted] = useState(false)
 
@@ -93,7 +95,7 @@ export const Post: FC<_PostProps> = ({ post }) => {
       <Box className="detail">
         <Css css={post.css} />
 
-        <Summary classes={getClasses('summary', mounted, postPosition)} post={post} styles={styles(mounted, postPosition)} />
+        <Summary classes={getClasses('summary', mounted, postPosition)} post={post} styles={styles(allRef, mounted, postPosition)} />
 
         <Extra mounted={mounted} post={post} postPosition={postPosition} />
 

@@ -1,5 +1,5 @@
 import { Post } from '@/components/post'
-import { POSTS_QUERY } from '@/utilities/constants'
+import { POSTS_QUERY } from '@/utilities/general'
 import { SANITY_CLIENT } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
 import type { Metadata } from 'next/types'
@@ -29,6 +29,8 @@ export const generateMetadata = async ({ params: { slug } }: _generateMetadataPa
     title: `${post.title} | Hoo Logic 株式会社`
   }
 }
+
+// functions
 
 export const generateStaticParams = async () => {
   const posts = await SANITY_CLIENT.fetch<_Post[]>(POSTS_QUERY)

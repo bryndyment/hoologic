@@ -1,37 +1,52 @@
-import { PATHNAME_ROOT, zMobileMediaQuery } from '@/utilities/constants'
+'use client'
+
 import { NOTO_SANS_JP } from '@/utilities/fonts'
-import { Box, Typography } from '@mui/material'
+import { PATHNAME_ROOT } from '@/utilities/general'
+import { BLACK, WHITE } from '@/utilities/styles'
+import { Box, Link, SxProps, Typography } from '@mui/material'
 import { blueGrey } from '@mui/material/colors'
-import Link from 'next/link'
+import RouterLink from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FC } from 'react'
 
-// types
+// constants
 
-type _CompanyProps = { pathname: string }
+const SX = {
+  '::after': { bottom: 3, color: blueGrey[50], content: ['', '', "'株式会社'"], fontSize: 57, ml: 0.5, position: 'relative' },
+  color: WHITE,
+  fontFamily: NOTO_SANS_JP.style.fontFamily,
+  fontSize: 65,
+  fontWeight: 700,
+  ml: -0.3125,
+  textShadow: `-0.5px 0 ${BLACK}, 0 0.5px ${BLACK}, 0.5px 0 ${BLACK}, 0 -0.5px ${BLACK}`,
+  textTransform: 'uppercase'
+}
+
+const SX_H1 = { lineHeight: 0.65 }
+const SX_LINK = { textDecoration: 'none' }
 
 // components
 
-export const Company: FC<_CompanyProps> = ({ pathname }) =>
-  pathname === PATHNAME_ROOT ? (
-    <Typography
-      className="name"
-      sx={{ '::after': { color: blueGrey[50] }, fontFamily: NOTO_SANS_JP.style.fontFamily, fontWeight: 700, lineHeight: 0.65 }}
-      variant="h1"
-    >
+export const Company: FC = () => {
+  const pathname = usePathname()
+
+  return pathname === PATHNAME_ROOT ? (
+    <Typography sx={{ ...SX, ...SX_H1 } as SxProps} variant="h1">
       <Inner />
     </Typography>
   ) : (
-    <Link className="name name--interior" href={PATHNAME_ROOT} style={{ fontFamily: NOTO_SANS_JP.style.fontFamily, fontWeight: '700' }}>
+    <Link component={RouterLink} href={PATHNAME_ROOT} sx={{ ...SX, ...SX_LINK } as SxProps}>
       <Inner />
     </Link>
   )
+}
 
 const Inner: FC = () => (
   <>
     <>Hoo</>
 
-    <Box component="span" sx={{ [zMobileMediaQuery]: { display: 'none' } }}>
-      <> Logic</>
+    <Box component="span" sx={{ display: ['none', 'inline'] }}>
+      <> Logic </>
     </Box>
   </>
 )

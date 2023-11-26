@@ -6,6 +6,15 @@ import { blueGrey } from '@mui/material/colors'
 // constants
 
 export const THEME = createTheme({
+  breakpoints: {
+    values: {
+      lg: 10000,
+      md: 960,
+      sm: 640,
+      xl: 15000,
+      xs: 0
+    }
+  },
   components: {
     MuiCssBaseline: {
       styleOverrides: {

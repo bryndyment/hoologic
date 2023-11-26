@@ -1,4 +1,4 @@
-import { PATHNAME_ROOT } from '@/utilities/constants'
+import { PATHNAME_ROOT } from '@/utilities/general'
 import type { Metadata } from 'next/types'
 import { FC } from 'react'
 
@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: PATHNAME_ROOT
   },
-  description: 'Hoo Logic 株式会社 | React + TypeScript',
-  title: 'Hoo Logic 株式会社 | React + TypeScript'
+  description: 'Hoo Logic | React | Tōkyō',
+  title: 'Hoo Logic | React | Tōkyō'
 }
 
 // components

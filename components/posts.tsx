@@ -1,7 +1,7 @@
 'use client'
 
 import { Summary } from '@/components/summary'
-import { PATHNAME_ABOUT, PATHNAME_PERSON, PATHNAME_ROOT } from '@/utilities/constants'
+import { PATHNAME_ABOUT, PATHNAME_PERSON, PATHNAME_ROOT } from '@/utilities/general'
 import type { _Post } from '@/utilities/types'
 // import { useWindowSize } from '@react-hook/window-size'
 import { usePathname } from 'next/navigation'

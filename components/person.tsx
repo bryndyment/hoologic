@@ -1,36 +1,41 @@
+'use client'
+
 import { useAppContext } from '@/hooks/useAppContext'
 import profileImage from '@/public/profile.png'
-import { PATHNAME_PERSON } from '@/utilities/constants'
-import { Box } from '@mui/material'
+import { PATHNAME_PERSON } from '@/utilities/general'
+import { Box, Link } from '@mui/material'
 import Image from 'next/image'
-import Link from 'next/link'
+import RouterLink from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FC } from 'react'
-
-// types
-
-type _PersonProps = { pathname: string }
 
 // constants
 
-const PERSON = <Image alt="Bryn Dyment" className="icon__image" src={profileImage} />
+const PERSON = <Image alt="Bryn Dyment" src={profileImage} style={{ borderRadius: 2, height: 50, width: 50 }} />
 
 // components
 
-export const Person: FC<_PersonProps> = ({ pathname }) => {
+export const Person: FC = () => {
   const { setPostPosition } = useAppContext()
+  const pathname = usePathname()
 
   const handleClick = () => setPostPosition({ left: -314, top: 114 })
 
   if (pathname === PATHNAME_PERSON) {
     return (
-      <Box className="icon icon__profile icon__profile--current" component="span">
+      <Box component="span" sx={{ mx: 0.375 }}>
         {PERSON}
       </Box>
     )
   }
 
   return (
-    <Link className="icon icon__profile" href={PATHNAME_PERSON} onClick={handleClick}>
+    <Link
+      component={RouterLink}
+      href={PATHNAME_PERSON}
+      onClick={handleClick}
+      sx={{ ':hover': { transform: 'scale(0.96)', transition: 'transform 0.1s' }, mx: 0.375 }}
+    >
       {PERSON}
     </Link>
   )

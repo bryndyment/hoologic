@@ -1,13 +1,11 @@
+import { All } from '@/components/all'
 import { AppContextProvider } from '@/components/appContextProvider'
-import { Footer } from '@/components/footer'
-import { Header } from '@/components/header'
-import { Posts } from '@/components/posts'
 import { ThemeContextProvider } from '@/components/themeContextProvider'
 import '@/styles/index.scss'
-import { POSTS_QUERY } from '@/utilities/constants'
+import { POSTS_QUERY } from '@/utilities/general'
 import { SANITY_CLIENT } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
-import { Box, CssBaseline } from '@mui/material'
+import { CssBaseline } from '@mui/material'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { FC, ReactNode } from 'react'
@@ -34,15 +32,7 @@ const RootLayout: FC<_RootLayoutProps> = async ({ children }) => {
           <CssBaseline />
 
           <AppContextProvider>
-            <Box className="all all--home">
-              <Header />
-
-              {children}
-
-              <Posts posts={posts.filter(post => post.visible)} />
-
-              <Footer />
-            </Box>
+            <All posts={posts}>{children}</All>
           </AppContextProvider>
         </ThemeContextProvider>
 

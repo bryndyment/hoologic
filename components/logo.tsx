@@ -1,44 +1,40 @@
+'use client'
+
 import { useAppContext } from '@/hooks/useAppContext'
-import { PATHNAME_ABOUT } from '@/utilities/constants'
-import { Box } from '@mui/material'
-import Link from 'next/link'
+import { PATHNAME_ABOUT } from '@/utilities/general'
+import { BLACK, WHITE } from '@/utilities/styles'
+import { Box, Link } from '@mui/material'
+import { red } from '@mui/material/colors'
+import RouterLink from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FC } from 'react'
-
-// types
-
-type _LogoProps = { pathname: string }
 
 // constants
 
 const LOGO = (
-  <svg className="icon__logo-svg" height="50" width="50" xmlns="http://www.w3.org/2000/svg">
-    <rect className="icon__logo-background" fill="#aaa" height="50" width="50" />
-    <g strokeWidth="0">
-      <rect fill="#fff" height="30" width="10" x="10" y="10" />
-      <rect fill="#fff" height="10" width="30" x="10" y="20" />
-      <rect className="icon__logo-l" fill="#ccc" height="10" width="10" x="30" y="10" />
-      <rect className="icon__logo-l" fill="#ccc" height="10" width="20" x="30" y="30" />
-    </g>
-  </svg>
+  <Box sx={{ borderRadius: 2, position: 'absolute', right: 2.5 }}>
+    <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+      <rect fill={BLACK} height="50" width="50" />
+      <rect fill={WHITE} height="30" width="10" x="10" y="10" />
+      <rect fill={WHITE} height="10" width="30" x="10" y="20" />
+      <rect fill={red[600]} height="10" width="10" x="30" y="10" />
+      <rect fill={red[600]} height="10" width="20" x="30" y="30" />
+    </svg>
+  </Box>
 )
 
 // components
 
-export const Logo: FC<_LogoProps> = ({ pathname }) => {
+export const Logo: FC = () => {
   const { setPostPosition } = useAppContext()
+  const pathname = usePathname()
 
   const handleClick = () => setPostPosition({ left: -314, top: 114 })
 
-  if (pathname === PATHNAME_ABOUT) {
-    return (
-      <Box className="icon icon__logo icon__logo--current" component="span">
-        {LOGO}
-      </Box>
-    )
-  }
-
-  return (
-    <Link className="icon icon__logo" href={PATHNAME_ABOUT} onClick={handleClick}>
+  return pathname === PATHNAME_ABOUT ? (
+    <Box component="span">{LOGO}</Box>
+  ) : (
+    <Link component={RouterLink} href={PATHNAME_ABOUT} onClick={handleClick} sx={{ ':hover': { transform: 'scale(0.96)', transition: 'transform 0.1s' } }}>
       {LOGO}
     </Link>
   )
