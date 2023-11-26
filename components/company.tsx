@@ -22,7 +22,6 @@ const SX = {
   textTransform: 'uppercase'
 }
 
-const SX_H1 = { lineHeight: 0.65 }
 const SX_LINK = { textDecoration: 'none' }
 
 // components
@@ -31,7 +30,7 @@ export const Company: FC = () => {
   const pathname = usePathname()
 
   return pathname === PATHNAME_ROOT ? (
-    <Typography sx={{ ...SX, ...SX_H1 } as SxProps} variant="h1">
+    <Typography sx={SX as SxProps} variant="h1">
       <Inner />
     </Typography>
   ) : (

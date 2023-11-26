@@ -1,13 +1,14 @@
 import { SERIALIZERS } from '@/components/serializers'
 import { useAppContext } from '@/hooks/useAppContext'
 import { sanityImageUrl } from '@/utilities/sanity'
+import { WHITE } from '@/utilities/styles'
 import type { _Post } from '@/utilities/types'
-import { Box } from '@mui/material'
+import { Box, Link, Typography } from '@mui/material'
 import { PortableText } from '@portabletext/react'
 import { getImageDimensions } from '@sanity/asset-utils'
 import classNames from 'classnames'
 import Image from 'next/image'
-import Link from 'next/link'
+import RouterLink from 'next/link'
 import React, { Dispatch, FC, MouseEvent, SetStateAction, useState } from 'react'
 
 // types
@@ -35,7 +36,16 @@ const ConditionalLink: FC<_ConditionalLinkProps> = ({ currentLink, isLink, post,
 
   if (!isLink) return null
 
-  return <Link className={classes()} href={`/${post.slug.current}`} onClick={handleClick} onMouseOver={handleMouseOver} />
+  return (
+    <Link
+      className={classes()}
+      component={RouterLink}
+      href={`/${post.slug.current}`}
+      onClick={handleClick}
+      onMouseOver={handleMouseOver}
+      sx={{ pointerEvents: 'auto' }}
+    />
+  )
 }
 
 const Description: FC<_DescriptionProps> = ({ description }) =>
@@ -50,13 +60,13 @@ export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styl
 
   const { height, width } = getImageDimensions(post.thumbnailImage)
 
-  const handleMouseLeave = () => setCurrentLink('')
+  const handleMouseOut = () => setCurrentLink('')
 
   return (
-    <Box className={classes} onMouseLeave={handleMouseLeave} style={styles}>
+    <Box className={classes} onMouseOut={handleMouseOut} style={styles} sx={{ mb: 0.75, mx: 0.375, width: 314 }}>
       <ConditionalLink currentLink={currentLink} isLink={isLink} post={post} setCurrentLink={setCurrentLink} />
 
-      <Box className="summary__inner">
+      <Box sx={{ bgcolor: WHITE, border: '0.5px solid', borderRadius: 0.5, img: { height: 'auto', width: '100%' }, p: 1.5, pointerEvents: 'none' }}>
         <Image alt={post.title} height={height} src={sanityImageUrl(post.thumbnailImage)} width={width} />
 
         <Title isTitleInBody={post.titleInBody} title={post.title} />
@@ -67,4 +77,9 @@ export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styl
   )
 }
 
-const Title: FC<_TitleProps> = ({ isTitleInBody, title }) => (isTitleInBody ? null : <h1 className="summary__heading">{title}</h1>)
+const Title: FC<_TitleProps> = ({ isTitleInBody, title }) =>
+  isTitleInBody ? null : (
+    <Typography sx={{ fontSize: 19, fontWeight: 700, mb: 1.5, mt: 2.25, textTransform: 'uppercase' }} variant="h1">
+      {title}
+    </Typography>
+  )

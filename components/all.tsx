@@ -26,7 +26,6 @@ const FOOTER_HEADER_SX = {
   justifyContent: 'space-between',
   ml: 0,
   mr: 'auto',
-  mt: 0,
   position: 'relative',
   transition: 'width 0.5s',
   whitespace: 'nowrap',
@@ -39,7 +38,7 @@ export const All: FC<_AllProps> = ({ children, posts }) => {
   const { allRef } = useAppContext()
 
   return (
-    <Box ref={allRef} sx={{ mx: 'auto', my: 0, py: 4, width: BREAKPOINTS }}>
+    <Box ref={allRef} sx={{ mx: 'auto', py: 4, width: BREAKPOINTS }}>
       <Box component="header" sx={{ ...FOOTER_HEADER_SX, mb: 4 } as SxProps}>
         <Company />
 
@@ -50,7 +49,7 @@ export const All: FC<_AllProps> = ({ children, posts }) => {
 
       <Posts posts={posts.filter(post => post.visible)} />
 
-      <Box component="footer" sx={{ ...FOOTER_HEADER_SX, mb: 0 } as SxProps}>
+      <Box component="footer" sx={FOOTER_HEADER_SX as SxProps}>
         <Person />
 
         <Location />

@@ -11,7 +11,11 @@ import { FC } from 'react'
 
 // constants
 
-const PERSON = <Image alt="Bryn Dyment" src={profileImage} style={{ borderRadius: 2, height: 50, width: 50 }} />
+const PERSON = (
+  <Box sx={{ height: 50, img: { borderRadius: 0.5, height: 'auto', width: '100%' }, width: 50 }}>
+    <Image alt="Bryn Dyment" src={profileImage} />
+  </Box>
+)
 
 // components
 

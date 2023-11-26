@@ -23,6 +23,11 @@ export const THEME = createTheme({
         body: { WebkitFontSmoothing: 'auto' },
         'li, p': { fontSize: 14.5 }
       }
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: { lineHeight: 0.65 }
+      }
     }
   },
   palette: { background: { default: blueGrey[50] } },

@@ -1,21 +1,9 @@
 .summary {
-  margin: 0 3px 6px; width: 314px;
-
   & figure { margin: 0; }
 
   &__description a { text-decoration: underline; }
 
-  &__heading { color: #000; font-size: 19px; margin: 18px 0 12px; text-transform: uppercase; }
-
   &__image { border-radius: 2px; width: 290px; }
-
-  &__inner {
-    background: #fff; border: 0.5px solid #000; border-radius: 2px; padding: 12px; pointer-events: none; position: relative;
-
-    a { pointer-events: auto; }
-
-    img { height: auto; width: 100%; }
-  }
 
   &__link { border-radius: 2px; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; }
 

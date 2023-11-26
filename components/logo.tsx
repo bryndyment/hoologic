@@ -12,7 +12,7 @@ import { FC } from 'react'
 // constants
 
 const LOGO = (
-  <Box sx={{ borderRadius: 2, position: 'absolute', right: 2.5 }}>
+  <Box sx={{ position: 'absolute', right: 2.5, svg: { borderRadius: 0.5 } }}>
     <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
       <rect fill={BLACK} height="50" width="50" />
       <rect fill={WHITE} height="30" width="10" x="10" y="10" />
