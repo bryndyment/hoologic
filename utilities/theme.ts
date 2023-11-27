@@ -1,5 +1,6 @@
 'use client'
 
+import { BLACK } from './styles'
 import { createTheme } from '@mui/material'
 import { blueGrey } from '@mui/material/colors'
 
@@ -22,6 +23,11 @@ export const THEME = createTheme({
         '*:focus': { outline: 'none' },
         body: { WebkitFontSmoothing: 'auto' },
         'li, p': { fontSize: 14.5 }
+      }
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: { color: BLACK, textDecoration: 'none' }
       }
     },
     MuiTypography: {

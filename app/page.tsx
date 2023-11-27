@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: PATHNAME_ROOT
   },
-  description: 'Hoo Logic | React | Tōkyō',
-  title: 'Hoo Logic | React | Tōkyō'
+  description: 'Hoo Logic | React + TypeScript',
+  title: 'Hoo Logic | React + TypeScript'
 }
 
 // components

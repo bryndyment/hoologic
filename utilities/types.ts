@@ -7,7 +7,6 @@ export type _Post = {
   body: any
   bodyThree: any
   bodyTwo: any
-  centerBody: boolean
   css: any
   description: any
   extra: any
@@ -22,6 +21,5 @@ export type _Post = {
     }
   }
   title: string
-  titleInBody: boolean
   visible: boolean
 }

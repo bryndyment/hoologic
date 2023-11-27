@@ -1,21 +1,9 @@
 .summary {
-  & figure { margin: 0; }
+  &--after { float: left; margin-left: 0;
 
-  &__description a { text-decoration: underline; }
-
-  &__image { border-radius: 2px; width: 290px; }
-
-  &__link { border-radius: 2px; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; }
-
-  &--after {
-    float: left; margin-left: 0;
-
-    @media (max-width: 959px) and (min-width: 640px) {
-      & { margin-bottom: 6px; }
-    }
+    @media (max-width: 959px) and (min-width: 640px) { margin-bottom: 6px; }
   }
 
   &--before { position: absolute; z-index: 668; }
-
   &--during { position: absolute; transition: left 0.5s, top 0.5s; z-index: 668; }
 }

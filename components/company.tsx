@@ -22,8 +22,6 @@ const SX = {
   textTransform: 'uppercase'
 }
 
-const SX_LINK = { textDecoration: 'none' }
-
 // components
 
 export const Company: FC = () => {
@@ -34,7 +32,7 @@ export const Company: FC = () => {
       <Inner />
     </Typography>
   ) : (
-    <Link component={RouterLink} href={PATHNAME_ROOT} sx={{ ...SX, ...SX_LINK } as SxProps}>
+    <Link component={RouterLink} href={PATHNAME_ROOT} sx={SX as SxProps}>
       <Inner />
     </Link>
   )

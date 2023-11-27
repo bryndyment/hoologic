@@ -1,16 +1,9 @@
-.detail { margin: 0 auto; padding: 0 3px 32px; width: 960px;
+.post { margin: 0 auto; padding: 0 3px 32px; width: 960px;
 
   &::after { clear: both; content: ''; display: table; }
 
-  // responsive
-
-  @media (max-width: 639px) {
-    & { width: 320px; }
-  }
-
-  @media (max-width: 959px) and (min-width: 640px) {
-    & { width: 640px; }
-  }
+  @media (max-width: 639px) { width: 320px; }
+  @media (max-width: 959px) and (min-width: 640px) { width: 640px; }
 
   &__content { background: #fff; border: 0.5px solid #000; border-radius: 2px; height: 634px; margin-left: 320px; max-height: 634px; overflow-y: scroll; padding: 12px; width: 634px;
 
@@ -26,44 +19,11 @@
       &:first-child { margin-top: 0; }
     }
 
-    &--center { text-align: center; }
-
-    // responsive
-
-    @media (max-width: 639px) {
-      & { clear: left; float: left; height: auto; margin-left: 0; max-height: none; width: 314px; }
-    }
-
-    @media (max-width: 959px) {
-      & { overflow-x: scroll; --webkit-overflow-scrolling: touch; }
-    }
-
-    @media (max-width: 959px) and (min-width: 640px) {
-      & { clear: both; margin-left: 0; }
-
-      &--before, &--during { opacity: 0; }
-    }
+    @media (max-width: 639px) { clear: left; float: left; height: 314px; margin-left: 0; max-height: 314px; width: 314px; }
+    @media (max-width: 959px) and (min-width: 640px) { clear: both; margin-left: 0; }
   }
-
-  &__heading { margin-top: 12px; }
-
-  a { text-decoration: underline; }
 }
 
 .extra {
-  background: #fff; border: 0.5px solid #000; border-radius: 2px; clear: left; float: left; margin: 0 3px 6px 0; padding: 12px; transition: opacity 0.5s; width: 314px;
-
-  &__link { color: #000; display: block; margin: 4px 0 2px; text-decoration: underline; }
-
   &--before, &--during { opacity: 0; }
-
-  // responsive
-
-  @media (max-width: 639px) {
-    & { clear: left; float: left; height: auto; margin-left: 0; max-height: none; }
-  }
-
-  @media (max-width: 959px) and (min-width: 640px) {
-    & { clear: none; margin: 0 0 6px 3px; }
-  }
 }

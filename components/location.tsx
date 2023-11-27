@@ -1,6 +1,6 @@
 import { NOTO_SANS_JP } from '@/utilities/fonts'
 import { WHITE } from '@/utilities/styles'
-import { Box, SxProps } from '@mui/material'
+import { Box, SxProps, Typography } from '@mui/material'
 import { blueGrey } from '@mui/material/colors'
 import { FC } from 'react'
 
@@ -13,7 +13,7 @@ const SX_TOKYO = { color: WHITE, fontSize: 65, textTransform: 'uppercase' }
 // components
 
 export const Location: FC = () => (
-  <Box sx={{ position: 'absolute', right: 0.5 }}>
+  <Typography sx={{ position: 'absolute', right: 0.5 }}>
     <Box component="span" sx={{ ...SX, ...SX_TOKYO }}>
       To
       <Box component="span" sx={{ position: 'relative', right: 4 }}>
@@ -25,5 +25,5 @@ export const Location: FC = () => (
     <Box component="span" sx={{ ...SX, ...SX_JAPAN } as SxProps}>
       <> 日本</>
     </Box>
-  </Box>
+  </Typography>
 )
