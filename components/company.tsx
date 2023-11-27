@@ -12,7 +12,7 @@ import { FC } from 'react'
 // constants
 
 const SX_FN = ({ breakpoints }: Theme) => ({
-  [breakpoints.only('md')]: { '::after': { bottom: 3, color: blueGrey[50], content: "'株式会社'", fontSize: 57, ml: 0.5, position: 'relative' } },
+  [breakpoints.only('sm')]: { '::after': { bottom: 3, color: blueGrey[50], content: "'株式会社'", fontSize: 57, ml: 0.5, position: 'relative' } },
   color: WHITE,
   fontFamily: NOTO_SANS_JP.style.fontFamily,
   fontSize: 65,

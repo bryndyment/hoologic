@@ -3,7 +3,7 @@
 import { SERIALIZERS } from '@/components/serializers'
 import { Summary } from '@/components/summary'
 import { useAppContext } from '@/hooks/useAppContext'
-import { SX_CONTENT, WHITE } from '@/utilities/styles'
+import { SX_CONTENT, WHITE, WIDTH } from '@/utilities/styles'
 import type { _Position, _Post } from '@/utilities/types'
 import { Box, SxProps, Theme } from '@mui/material'
 import { PortableText } from '@portabletext/react'
@@ -23,11 +23,10 @@ const SX_EXTRA = {
   bgcolor: WHITE,
   border: '0.5px solid',
   borderRadius: 0.5,
-  clear: ['left', 'none', 'left'],
+  clear: 'left',
   float: 'left',
   mb: [0.75, 0],
-  ml: [0, 0.375, 0],
-  mr: [0, 0, 0.375],
+  mr: [0, 0.375],
   p: 1.5,
   transition: 'opacity 0.5s',
   width: 314,
@@ -39,14 +38,13 @@ const SX_POST_FN = ({ breakpoints }: Theme) => ({
   mx: 'auto',
   pb: 4,
   px: 0.375,
-  width: [320, 640, 960]
+  width: WIDTH
 })
 
 const SX_POST_CONTENT_FN = ({ breakpoints }: Theme) => ({
   bgcolor: WHITE,
   border: '0.5px solid',
   borderRadius: 0.5,
-  [breakpoints.only('sm')]: { clear: 'both', ml: 0 },
   [breakpoints.only('xs')]: { clear: 'left', float: 'left', height: 314, maxHeight: 314, ml: 0, width: 314 },
   height: 634,
   maxHeight: 634,
@@ -93,7 +91,7 @@ const Extra: FC<_ExtraProps> = ({ post, postPosition }) =>
   post.extra ? (
     <Box
       sx={{
-        opacity: [1, 1, postPosition ? 0 : 1],
+        opacity: [1, postPosition ? 0 : 1],
         ...(SX_EXTRA as SxProps)
       }}
     >

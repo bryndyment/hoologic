@@ -2,9 +2,8 @@
 
 import { useAppContext } from '@/hooks/useAppContext'
 import { PATHNAME_ABOUT } from '@/utilities/general'
-import { BLACK, WHITE } from '@/utilities/styles'
+import { BLACK, RED, WHITE } from '@/utilities/styles'
 import { Box, Link } from '@mui/material'
-import { red } from '@mui/material/colors'
 import RouterLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
@@ -17,8 +16,8 @@ const LOGO = (
       <rect fill={BLACK} height="50" width="50" />
       <rect fill={WHITE} height="30" width="10" x="10" y="10" />
       <rect fill={WHITE} height="10" width="30" x="10" y="20" />
-      <rect fill={red[600]} height="10" width="10" x="30" y="10" />
-      <rect fill={red[600]} height="10" width="20" x="30" y="30" />
+      <rect fill={RED} height="10" width="10" x="30" y="10" />
+      <rect fill={RED} height="10" width="20" x="30" y="30" />
     </svg>
   </Box>
 )

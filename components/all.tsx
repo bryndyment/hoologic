@@ -6,7 +6,7 @@ import { Logo } from '@/components/logo'
 import { Person } from '@/components/person'
 import { Posts } from '@/components/posts'
 import { useAppContext } from '@/hooks/useAppContext'
-import { BREAKPOINTS } from '@/utilities/styles'
+import { WIDTH } from '@/utilities/styles'
 import { _Post } from '@/utilities/types'
 import { Box, SxProps } from '@mui/material'
 import { FC, ReactNode } from 'react'
@@ -29,7 +29,7 @@ const FOOTER_HEADER_SX = {
   position: 'relative',
   transition: 'width 0.5s',
   whitespace: 'nowrap',
-  width: BREAKPOINTS
+  width: WIDTH
 }
 
 // components
@@ -38,7 +38,7 @@ export const All: FC<_AllProps> = ({ children, posts }) => {
   const { allRef } = useAppContext()
 
   return (
-    <Box ref={allRef} sx={{ mx: 'auto', py: 4, width: BREAKPOINTS }}>
+    <Box ref={allRef} sx={{ mx: 'auto', py: 4, width: WIDTH }}>
       <Box component="header" sx={{ ...FOOTER_HEADER_SX, mb: 4 } as SxProps}>
         <Company />
 

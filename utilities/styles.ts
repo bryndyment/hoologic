@@ -3,7 +3,7 @@ import { common } from '@mui/material/colors'
 // constants
 
 export const BLACK = common.black
-export const BREAKPOINTS = [320, 640, 960]
+export const RED = '#d24e3e'
 
 export const SX_CONTENT = {
   a: { color: BLACK },
@@ -13,3 +13,4 @@ export const SX_CONTENT = {
 }
 
 export const WHITE = common.white
+export const WIDTH = [320, 960]

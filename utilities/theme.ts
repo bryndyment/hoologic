@@ -9,10 +9,10 @@ import { blueGrey } from '@mui/material/colors'
 export const THEME = createTheme({
   breakpoints: {
     values: {
-      lg: 10000,
-      md: 960,
+      lg: 15000,
+      md: 10000,
       sm: 640,
-      xl: 15000,
+      xl: 20000,
       xs: 0
     }
   },
