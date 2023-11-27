@@ -5,7 +5,7 @@ import { Summary } from '@/components/summary'
 import { useAppContext } from '@/hooks/useAppContext'
 import { SX_CONTENT, WHITE } from '@/utilities/styles'
 import type { _Position, _Post } from '@/utilities/types'
-import { Box, SxProps } from '@mui/material'
+import { Box, SxProps, Theme } from '@mui/material'
 import { PortableText } from '@portabletext/react'
 import React, { FC, RefObject, useEffect, useState } from 'react'
 
@@ -13,7 +13,7 @@ import React, { FC, RefObject, useEffect, useState } from 'react'
 
 type _BlockProps = { blocks: any }
 type _CssProps = { css: string }
-type _ExtraProps = { mounted: boolean; post: _Post; postPosition: any }
+type _ExtraProps = { post: _Post; postPosition?: _Position }
 type _HtmlProps = { html: string }
 type _PostProps = { post: _Post }
 
@@ -34,18 +34,30 @@ const SX_EXTRA = {
   ...SX_CONTENT
 }
 
+const SX_POST_FN = ({ breakpoints }: Theme) => ({
+  [breakpoints.only('xs')]: { '::after': { clear: 'both', content: "''", display: 'block' } },
+  mx: 'auto',
+  pb: 4,
+  px: 0.375,
+  width: [320, 640, 960]
+})
+
+const SX_POST_CONTENT_FN = ({ breakpoints }: Theme) => ({
+  bgcolor: WHITE,
+  border: '0.5px solid',
+  borderRadius: 0.5,
+  [breakpoints.only('sm')]: { clear: 'both', ml: 0 },
+  [breakpoints.only('xs')]: { clear: 'left', float: 'left', height: 314, maxHeight: 314, ml: 0, width: 314 },
+  height: 634,
+  maxHeight: 634,
+  ml: 40,
+  overflowY: 'scroll',
+  p: 1.5,
+  width: 634,
+  ...SX_CONTENT
+})
+
 // functions
-
-const getClasses = (item: string, mounted: boolean, postPosition?: _Position) => {
-  let classes = item
-
-  if (postPosition && window.matchMedia('(min-width: 960px)').matches) {
-    if (mounted) classes += ` ${item}--during`
-    else classes += ` ${item}--before`
-  } else classes += ` ${item}--after`
-
-  return classes
-}
 
 const getLeftOffset = (allRef: RefObject<HTMLDivElement>) => {
   if (!allRef.current) return 0
@@ -77,24 +89,26 @@ const Block: FC<_BlockProps> = ({ blocks }) => (blocks ? <PortableText component
 
 const Css: FC<_CssProps> = ({ css }) => (css ? <style>{css}</style> : null)
 
-const Extra: FC<_ExtraProps> = ({ mounted, post, postPosition }) =>
+const Extra: FC<_ExtraProps> = ({ post, postPosition }) =>
   post.extra ? (
-    <Box className={getClasses('extra', mounted, postPosition)} sx={SX_EXTRA as SxProps}>
+    <Box
+      sx={{
+        opacity: [1, 1, postPosition ? 0 : 1],
+        ...(SX_EXTRA as SxProps)
+      }}
+    >
       <PortableText components={SERIALIZERS} value={post.extra} />
     </Box>
   ) : null
 
 const Html: FC<_HtmlProps> = ({ html }) => (html ? <Box dangerouslySetInnerHTML={{ __html: html }} /> : null)
 
-// components
-
 export const Post: FC<_PostProps> = ({ post }) => {
   const { allRef, postPosition, setPostPosition } = useAppContext()
-
-  const [mounted, setMounted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    setIsMounted(true)
 
     if (postPosition) {
       setTimeout(() => setPostPosition(undefined), 500)
@@ -103,14 +117,14 @@ export const Post: FC<_PostProps> = ({ post }) => {
 
   return (
     <>
-      <Box className="post">
+      <Box className="post" sx={SX_POST_FN}>
         <Css css={post.css} />
 
-        <Summary classes={getClasses('summary', mounted, postPosition)} post={post} styles={styles(allRef, mounted, postPosition)} />
+        <Summary isMounted post={post} styles={styles(allRef, isMounted, postPosition)} />
 
-        <Extra mounted={mounted} post={post} postPosition={postPosition} />
+        <Extra post={post} postPosition={postPosition} />
 
-        <Box className={getClasses('post__content', mounted, postPosition)} sx={SX_CONTENT}>
+        <Box sx={SX_POST_CONTENT_FN}>
           <Block blocks={post.body} />
 
           <Html html={post.html} />

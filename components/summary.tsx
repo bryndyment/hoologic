@@ -2,7 +2,7 @@ import { SERIALIZERS } from '@/components/serializers'
 import { useAppContext } from '@/hooks/useAppContext'
 import { sanityImageUrl } from '@/utilities/sanity'
 import { BLACK, SX_CONTENT, WHITE } from '@/utilities/styles'
-import type { _Post } from '@/utilities/types'
+import type { _Position, _Post } from '@/utilities/types'
 import { Box, Link, Typography } from '@mui/material'
 import { PortableText } from '@portabletext/react'
 import { getImageDimensions } from '@sanity/asset-utils'
@@ -14,8 +14,13 @@ import React, { Dispatch, FC, MouseEvent, ReactNode, SetStateAction, useState } 
 
 type _ConditionalLinkProps = { children: ReactNode; currentLink: string; isLink: boolean; post: any; setCurrentLink: Dispatch<SetStateAction<string>> }
 type _DescriptionProps = { description: any }
-type _SummaryProps = { classes?: string; isLink?: boolean; post: _Post; styles?: any }
+type _SummaryProps = { isLink?: boolean; isMounted?: boolean; post: _Post; styles?: any }
 type _TitleProps = { title: string }
+
+// functions
+
+const getClasses = (isLink: boolean, isMounted: boolean, postPosition?: _Position) =>
+  isLink ? undefined : postPosition && window.matchMedia('(min-width: 960px)').matches ? (isMounted ? 'summary--during' : 'summary--before') : 'summary--after'
 
 // components
 
@@ -52,7 +57,8 @@ const ConditionalLink: FC<_ConditionalLinkProps> = ({ children, currentLink, isL
 
 const Description: FC<_DescriptionProps> = ({ description }) => description && <PortableText components={SERIALIZERS} value={description} />
 
-export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styles }) => {
+export const Summary: FC<_SummaryProps> = ({ isLink = false, isMounted = false, post, styles }) => {
+  const { postPosition } = useAppContext()
   const [currentLink, setCurrentLink] = useState('')
 
   const { height, width } = getImageDimensions(post.thumbnailImage)
@@ -60,7 +66,7 @@ export const Summary: FC<_SummaryProps> = ({ classes, isLink = false, post, styl
   const handleMouseOut = () => setCurrentLink('')
 
   return (
-    <Box className={classes} onMouseOut={handleMouseOut} style={styles} sx={{ mb: 0.75, mx: 0.375, width: 314 }}>
+    <Box className={getClasses(isLink, isMounted, postPosition)} onMouseOut={handleMouseOut} style={styles} sx={{ mb: 0.75, mx: 0.375, width: 314 }}>
       <ConditionalLink currentLink={currentLink} isLink={isLink} post={post} setCurrentLink={setCurrentLink}>
         <Box sx={{ bgcolor: WHITE, border: '0.5px solid', borderRadius: 0.5, p: 1.5, ...SX_CONTENT }}>
           <Image alt={post.title} height={height} src={sanityImageUrl(post.thumbnailImage)} width={width} />
