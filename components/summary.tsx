@@ -2,7 +2,7 @@ import { SERIALIZERS } from '@/components/serializers'
 import { useAppContext } from '@/hooks/useAppContext'
 import { sanityImageUrl } from '@/utilities/sanity'
 import { BLACK, SX_CONTENT, WHITE } from '@/utilities/styles'
-import type { _Position, _Post } from '@/utilities/types'
+import type { _Post } from '@/utilities/types'
 import { Box, Link, Typography } from '@mui/material'
 import { PortableText } from '@portabletext/react'
 import { getImageDimensions } from '@sanity/asset-utils'
@@ -16,11 +16,6 @@ type _ConditionalLinkProps = { children: ReactNode; currentLink: string; isLink:
 type _DescriptionProps = { description: any }
 type _SummaryProps = { isLink?: boolean; isMounted?: boolean; post: _Post; styles?: any }
 type _TitleProps = { title: string }
-
-// functions
-
-const getClasses = (isLink: boolean, isMounted: boolean, postPosition?: _Position) =>
-  isLink ? undefined : postPosition && window.matchMedia('(min-width: 960px)').matches ? (isMounted ? 'summary--during' : 'summary--before') : 'summary--after'
 
 // components
 
@@ -66,7 +61,20 @@ export const Summary: FC<_SummaryProps> = ({ isLink = false, isMounted = false, 
   const handleMouseOut = () => setCurrentLink('')
 
   return (
-    <Box className={getClasses(isLink, isMounted, postPosition)} onMouseOut={handleMouseOut} style={styles} sx={{ mb: 0.75, mx: 0.375, width: 314 }}>
+    <Box
+      onMouseOut={handleMouseOut}
+      style={styles}
+      sx={{
+        mb: 0.75,
+        mx: 0.375,
+        width: 314,
+        ...(isLink
+          ? {}
+          : isMounted && postPosition && window.matchMedia('(min-width: 960px)').matches
+            ? { position: 'absolute', transition: 'left 0.5s, top 0.5s', zIndex: 668 }
+            : { float: 'left', ml: 0 })
+      }}
+    >
       <ConditionalLink currentLink={currentLink} isLink={isLink} post={post} setCurrentLink={setCurrentLink}>
         <Box sx={{ bgcolor: WHITE, border: '0.5px solid', borderRadius: 0.5, p: 1.5, ...SX_CONTENT }}>
           <Image alt={post.title} height={height} src={sanityImageUrl(post.thumbnailImage)} width={width} />

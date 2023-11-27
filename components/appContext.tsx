@@ -11,7 +11,7 @@ type _AppContext = {
   setPostPosition: Dispatch<SetStateAction<_Position | undefined>>
 }
 
-type _AppContextProviderProps = { children: ReactNode }
+type _AppContextProps = { children: ReactNode }
 
 // context
 
@@ -19,7 +19,7 @@ export const APP_CONTEXT = createContext<_AppContext | null>(null)
 
 // components
 
-export const AppContextProvider: FC<_AppContextProviderProps> = ({ children }) => {
+export const AppContext: FC<_AppContextProps> = ({ children }) => {
   const allRef = useRef(null)
   const [postPosition, setPostPosition] = useState<_Position>()
 

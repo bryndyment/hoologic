@@ -1,7 +1,6 @@
 import { All } from '@/components/all'
-import { AppContextProvider } from '@/components/appContextProvider'
-import { ThemeContextProvider } from '@/components/themeContextProvider'
-import '@/styles/index.scss'
+import { AppContext } from '@/components/appContext'
+import { ThemeContext } from '@/components/themeContext'
 import { POSTS_QUERY } from '@/utilities/general'
 import { SANITY_CLIENT } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
@@ -28,13 +27,13 @@ const RootLayout: FC<_RootLayoutProps> = async ({ children }) => {
   return (
     <html lang="en-US">
       <body>
-        <ThemeContextProvider>
+        <ThemeContext>
           <CssBaseline />
 
-          <AppContextProvider>
+          <AppContext>
             <All posts={posts}>{children}</All>
-          </AppContextProvider>
-        </ThemeContextProvider>
+          </AppContext>
+        </ThemeContext>
 
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

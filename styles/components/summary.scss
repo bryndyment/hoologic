@@ -1,9 +1,0 @@
-.summary {
-  &--after { float: left; margin-left: 0;
-
-    @media (max-width: 959px) and (min-width: 640px) { margin-bottom: 6px; }
-  }
-
-  &--before { position: absolute; z-index: 668; }
-  &--during { position: absolute; transition: left 0.5s, top 0.5s; z-index: 668; }
-}
