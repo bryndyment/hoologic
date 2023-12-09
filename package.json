@@ -18,7 +18,7 @@
     "sharp": "0.33.0"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "14.0.3",
+    "@next/eslint-plugin-next": "14.0.4",
     "@portabletext/react": "3.0.11",
     "@sanity/client": "6.9.3",
     "@types/lodash": "^4.14.200",
