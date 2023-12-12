@@ -1,10 +1,9 @@
 import { All } from '@/components/all'
 import { AppContext } from '@/components/appContext'
-import { ThemeContext } from '@/components/themeContext'
+import ThemeRegistry from '@/components/mui/themeRegistry'
 import { POSTS_QUERY } from '@/utilities/general'
 import { SANITY_CLIENT } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
-import { CssBaseline } from '@mui/material'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { FC, ReactNode } from 'react'
@@ -27,13 +26,11 @@ const RootLayout: FC<_RootLayoutProps> = async ({ children }) => {
   return (
     <html lang="en-US">
       <body>
-        <ThemeContext>
-          <CssBaseline />
-
+        <ThemeRegistry>
           <AppContext>
             <All posts={posts}>{children}</All>
           </AppContext>
-        </ThemeContext>
+        </ThemeRegistry>
 
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
