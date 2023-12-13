@@ -5,7 +5,7 @@ import { PATHNAME_ABOUT, PATHNAME_PERSON, PATHNAME_ROOT } from '@/utilities/gene
 import type { _Post } from '@/utilities/types'
 import { Box } from '@mui/material'
 import { usePathname } from 'next/navigation'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import Masonry from 'react-masonry-component'
 
 // types
@@ -16,7 +16,6 @@ type _PostsProps = { posts: _Post[] }
 
 export const Posts: FC<_PostsProps> = ({ posts: initialPosts }) => {
   const pathname = usePathname()
-  const masonryRef = useRef()
   const [posts, setPosts] = useState(initialPosts)
 
   useEffect(() => {
@@ -36,8 +35,8 @@ export const Posts: FC<_PostsProps> = ({ posts: initialPosts }) => {
   const filteredPosts = useMemo(() => ([PATHNAME_ABOUT, PATHNAME_PERSON, PATHNAME_ROOT].includes(pathname) ? posts : posts.slice(0, -1)), [pathname, posts])
 
   return (
-    <Box sx={{ maxWidth: '100%', mb: 3.25, minWidth: 320, mx: 'auto' }}>
-      <Masonry ref={masonryRef}>
+    <Box sx={{ '> div': { position: 'relative' }, maxWidth: '100%', mb: 3.25, minWidth: 320, mx: 'auto' }}>
+      <Masonry>
         {filteredPosts.map(post => (
           <Summary isLink key={post._id} post={post} />
         ))}
