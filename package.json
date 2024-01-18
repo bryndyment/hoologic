@@ -7,8 +7,8 @@
   "dependencies": {
     "@emotion/react": "11.11.3",
     "@emotion/styled": "11.11.0",
-    "@mui/material": "5.15.4",
-    "@vercel/analytics": "1.1.1",
+    "@mui/material": "5.15.5",
+    "@vercel/analytics": "1.1.2",
     "classnames": "2.5.1",
     "next": "14.0.4",
     "react": "18.2.0",
@@ -38,8 +38,8 @@
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
     "next-sanity": "7.0.10",
-    "prettier": "3.2.2",
-    "sass": "1.69.7",
+    "prettier": "3.2.4",
+    "sass": "1.70.0",
     "typescript": "5.3.3"
   },
   "overrides": {
