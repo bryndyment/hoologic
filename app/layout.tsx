@@ -4,7 +4,6 @@ import ThemeRegistry from '@/components/mui/themeRegistry'
 import { POSTS_QUERY } from '@/utilities/general'
 import { SANITY_CLIENT } from '@/utilities/sanity'
 import type { _Post } from '@/utilities/types'
-import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { FC, ReactNode } from 'react'
 
@@ -31,8 +30,6 @@ const RootLayout: FC<_RootLayoutProps> = async ({ children }) => {
             <All posts={posts}>{children}</All>
           </AppContext>
         </ThemeRegistry>
-
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
