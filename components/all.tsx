@@ -38,7 +38,7 @@ export const All: FC<_AllProps> = ({ children, posts }) => {
   const { allRef } = useAppContext()
 
   return (
-    <Box ref={allRef} sx={{ mx: 'auto', py: 8, width: WIDTH }}>
+    <Box ref={allRef} sx={{ mx: 'auto', pb: 4, pt: 8, width: WIDTH }}>
       <Box component="header" sx={{ ...FOOTER_HEADER_SX, mb: 4 } as SxProps}>
         <Company />
 
