@@ -13,7 +13,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-masonry-component": "6.3.0",
-    "sharp": "0.33.2"
+    "sharp": "0.33.3"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "14.1.3",
