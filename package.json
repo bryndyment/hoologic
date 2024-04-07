@@ -39,7 +39,7 @@
     "next-sanity": "8.5.3",
     "prettier": "3.2.5",
     "sass": "1.72.0",
-    "typescript": "5.4.3"
+    "typescript": "5.4.4"
   },
   "overrides": {
     "react-masonry-component": {
