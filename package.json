@@ -38,7 +38,7 @@
     "lint-staged": "15.2.2",
     "next-sanity": "8.5.5",
     "prettier": "3.2.5",
-    "sass": "1.72.0",
+    "sass": "1.75.0",
     "typescript": "5.4.5"
   },
   "overrides": {
