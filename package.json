@@ -9,14 +9,14 @@
     "@emotion/styled": "11.11.5",
     "@mui/material": "5.15.15",
     "classnames": "2.5.1",
-    "next": "14.2.1",
+    "next": "14.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-masonry-component": "6.3.0",
     "sharp": "0.33.3"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "14.2.1",
+    "@next/eslint-plugin-next": "14.2.2",
     "@portabletext/react": "3.0.18",
     "@sanity/client": "6.15.17",
     "@types/lodash": "^4.14.200",
