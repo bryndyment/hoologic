@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "14.2.3",
-    "@portabletext/react": "3.0.18",
+    "@portabletext/react": "3.1.0",
     "@sanity/client": "6.18.3",
     "@types/lodash": "^4.14.200",
     "@types/node": "^20",
