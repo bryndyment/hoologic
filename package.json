@@ -31,7 +31,7 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-perfectionist": "2.11.0",
     "eslint-plugin-prettier": "5.2.1",
-    "eslint-plugin-promise": "6.4.0",
+    "eslint-plugin-promise": "6.5.0",
     "eslint-plugin-react": "7.34.4",
     "eslint-plugin-react-hooks": "4.6.2",
     "husky": "9.1.1",
