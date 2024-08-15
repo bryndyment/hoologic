@@ -1,9 +1,9 @@
-import { sanityImageUrl } from '../utilities/sanity'
 import { Box } from '@mui/material'
 import { getImageDimensions } from '@sanity/asset-utils'
 // import Image from 'next/image'
 import Link from 'next/link'
 import React, { FC, ReactNode } from 'react'
+import { sanityImageUrl } from '../utilities/sanity'
 
 // types
 
@@ -15,16 +15,19 @@ type _SpanSerializerProps = { children: ReactNode }
 
 // components
 
-const ExternalLinkSerializer: FC<_ExternalLinkSerializerProps> = ({ children, value }) =>
-  value ? (
-    value.blank ? (
+const ExternalLinkSerializer: FC<_ExternalLinkSerializerProps> = ({ children, value }) => {
+  if (!value) return null
+
+  if (value.blank) {
+    return (
       <a href={value.url} rel="noopener noreferrer" target="_blank">
         {children}
       </a>
-    ) : (
-      <a href={value.url}>{children}</a>
     )
-  ) : null
+  }
+
+  return <a href={value.url}>{children}</a>
+}
 
 const ImageSerializer: FC<_ImageSerializerProps> = ({ value }) => {
   const { height, width } = getImageDimensions(value)

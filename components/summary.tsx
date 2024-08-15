@@ -1,14 +1,14 @@
-import { useAppContext } from '../hooks/useAppContext'
-import { sanityImageUrl } from '../utilities/sanity'
-import { BLACK, SX_CONTENT, WHITE } from '../utilities/styles'
-import type { _Post } from '../utilities/types'
-import { SERIALIZERS } from './serializers'
 import { Box, Link, Typography } from '@mui/material'
 import { PortableText } from '@portabletext/react'
 import { getImageDimensions } from '@sanity/asset-utils'
 // import Image from 'next/image'
 import RouterLink from 'next/link'
 import React, { Dispatch, FC, MouseEvent, ReactNode, SetStateAction, useState } from 'react'
+import type { _Post } from '../utilities/types'
+import { useAppContext } from '../hooks/useAppContext'
+import { sanityImageUrl } from '../utilities/sanity'
+import { BLACK, SX_CONTENT, WHITE } from '../utilities/styles'
+import { SERIALIZERS } from './serializers'
 
 // types
 
@@ -31,23 +31,25 @@ const ConditionalLink: FC<_ConditionalLinkProps> = ({ children, currentLink, isL
   const handleMouseOver = ({ currentTarget }: MouseEvent<HTMLAnchorElement>) =>
     setCurrentLink((currentTarget.href.match(/^https?:\/\/[^/]+(.*)/) as RegExpMatchArray)[1])
 
-  return isLink ? (
-    <Link
-      component={RouterLink}
-      href={`/${post.slug.current}`}
-      onClick={handleClick}
-      onMouseOver={handleMouseOver}
-      sx={{
-        '> div': { transition: 'transform 0.1s', ...(post.slug.current === currentLink.slice(1) && { transform: 'scale(0.99)' }) },
-        color: BLACK,
-        display: 'block'
-      }}
-    >
-      {children}
-    </Link>
-  ) : (
-    <>{children}</>
-  )
+  if (isLink) {
+    return (
+      <Link
+        component={RouterLink}
+        href={`/${post.slug.current}`}
+        onClick={handleClick}
+        onMouseOver={handleMouseOver}
+        sx={{
+          '> div': { transition: 'transform 0.1s', ...(post.slug.current === currentLink.slice(1) && { transform: 'scale(0.99)' }) },
+          color: BLACK,
+          display: 'block'
+        }}
+      >
+        {children}
+      </Link>
+    )
+  }
+
+  return children
 }
 
 const Description: FC<_DescriptionProps> = ({ description }) => description && <PortableText components={SERIALIZERS} value={description} />

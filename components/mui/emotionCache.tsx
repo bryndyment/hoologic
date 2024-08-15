@@ -2,22 +2,22 @@
 
 // https://github.com/mui/material-ui/blob/master/examples/material-ui-nextjs-ts/src/components/ThemeRegistry/EmotionCache.tsx
 
-import createCache from '@emotion/cache'
 import type { EmotionCache, Options as OptionsOfCreateCache } from '@emotion/cache'
+import createCache from '@emotion/cache'
 import { CacheProvider as DefaultCacheProvider } from '@emotion/react'
 import { useServerInsertedHTML } from 'next/navigation'
 import * as React from 'react'
 
 export type NextAppDirEmotionCacheProviderProps = {
   /** By default <CacheProvider /> from 'import { CacheProvider } from "@emotion/react"' */
-  CacheProvider?: (props: { children: React.ReactNode; value: EmotionCache }) => React.JSX.Element | null
+  CacheProvider?: (props: { children: React.ReactNode; value: EmotionCache }) => null | React.JSX.Element
   children: React.ReactNode
   /** This is the options passed to createCache() from 'import createCache from "@emotion/cache"' */
   options: Omit<OptionsOfCreateCache, 'insertionPoint'>
 }
 
 // Adapted from https://github.com/garronej/tss-react/blob/main/src/next/appDir.tsx
-export default function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionCacheProviderProps) {
+const NextAppDirEmotionCacheProvider = (props: NextAppDirEmotionCacheProviderProps) => {
   const { CacheProvider = DefaultCacheProvider, children, options } = props
 
   const [registry] = React.useState(() => {
@@ -57,7 +57,7 @@ export default function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionC
     }[] = []
 
     inserted.forEach(({ isGlobal, name }) => {
-      const style = registry.cache.inserted[name]
+      const style = registry.cache.inserted[name] || ''
 
       if (typeof style !== 'boolean') {
         if (isGlobal) {
@@ -72,23 +72,14 @@ export default function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionC
     return (
       <React.Fragment>
         {globals.map(({ name, style }) => (
-          <style
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: style }}
-            data-emotion={`${registry.cache.key}-global ${name}`}
-            key={name}
-          />
+          <style dangerouslySetInnerHTML={{ __html: style }} data-emotion={`${registry.cache.key}-global ${name}`} key={name} />
         ))}
-        {styles && (
-          <style
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: styles }}
-            data-emotion={dataEmotionAttribute}
-          />
-        )}
+        {styles && <style dangerouslySetInnerHTML={{ __html: styles }} data-emotion={dataEmotionAttribute} />}
       </React.Fragment>
     )
   })
 
   return <CacheProvider value={registry.cache}>{children}</CacheProvider>
 }
+
+export default NextAppDirEmotionCacheProvider

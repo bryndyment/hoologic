@@ -1,8 +1,8 @@
 'use client'
 
-import { BLACK } from './styles'
 import { createTheme } from '@mui/material'
 import { blueGrey } from '@mui/material/colors'
+import { BLACK } from './styles'
 
 // constants
 

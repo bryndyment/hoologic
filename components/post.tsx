@@ -1,13 +1,13 @@
 'use client'
 
-import { useAppContext } from '../hooks/useAppContext'
-import { SX_CONTENT, WHITE, WIDTH } from '../utilities/styles'
-import type { _Position, _Post } from '../utilities/types'
-import { SERIALIZERS } from './serializers'
-import { Summary } from './summary'
 import { Box, SxProps, type Theme } from '@mui/material'
 import { PortableText } from '@portabletext/react'
 import React, { FC, RefObject, useEffect, useState } from 'react'
+import type { _Position, _Post } from '../utilities/types'
+import { useAppContext } from '../hooks/useAppContext'
+import { SX_CONTENT, WHITE, WIDTH } from '../utilities/styles'
+import { SERIALIZERS } from './serializers'
+import { Summary } from './summary'
 
 // types
 
@@ -87,17 +87,22 @@ const Block: FC<_BlockProps> = ({ blocks }) => (blocks ? <PortableText component
 
 const Css: FC<_CssProps> = ({ css }) => (css ? <style>{css}</style> : null)
 
-const Extra: FC<_ExtraProps> = ({ post, postPosition }) =>
-  post.extra ? (
-    <Box
-      sx={{
-        opacity: [1, postPosition ? 0 : 1],
-        ...(SX_EXTRA as SxProps)
-      }}
-    >
-      <PortableText components={SERIALIZERS} value={post.extra} />
-    </Box>
-  ) : null
+const Extra: FC<_ExtraProps> = ({ post, postPosition }) => {
+  if (post.extra) {
+    return (
+      <Box
+        sx={{
+          opacity: [1, postPosition ? 0 : 1],
+          ...(SX_EXTRA as SxProps)
+        }}
+      >
+        <PortableText components={SERIALIZERS} value={post.extra} />
+      </Box>
+    )
+  }
+
+  return null
+}
 
 const Html: FC<_HtmlProps> = ({ html }) => (html ? <Box dangerouslySetInnerHTML={{ __html: html }} /> : null)
 

@@ -1,13 +1,13 @@
 'use client'
 
-import { NOTO_SANS_JP } from '../utilities/fonts'
-import { PATHNAME_ROOT } from '../utilities/general'
-import { BLACK, WHITE } from '../utilities/styles'
 import { Box, Link, Theme, Typography } from '@mui/material'
 import { blueGrey } from '@mui/material/colors'
 import RouterLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
+import { NOTO_SANS_JP } from '../utilities/fonts'
+import { PATHNAME_ROOT } from '../utilities/general'
+import { BLACK, WHITE } from '../utilities/styles'
 
 // constants
 
@@ -27,11 +27,15 @@ const SX_FN = ({ breakpoints }: Theme) => ({
 export const Company: FC = () => {
   const pathname = usePathname()
 
-  return pathname === PATHNAME_ROOT ? (
-    <Typography sx={SX_FN} variant="h1">
-      <Inner />
-    </Typography>
-  ) : (
+  if (pathname === PATHNAME_ROOT) {
+    return (
+      <Typography sx={SX_FN} variant="h1">
+        <Inner />
+      </Typography>
+    )
+  }
+
+  return (
     <Link component={RouterLink} href={PATHNAME_ROOT} sx={SX_FN}>
       <Inner />
     </Link>

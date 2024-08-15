@@ -1,15 +1,15 @@
 'use client'
 
+import { Box, SxProps } from '@mui/material'
+import { FC, ReactNode } from 'react'
+import type { _Post } from '../utilities/types'
 import { useAppContext } from '../hooks/useAppContext'
 import { WIDTH } from '../utilities/styles'
-import type { _Post } from '../utilities/types'
 import { Company } from './company'
 import { Location } from './location'
 import { Logo } from './logo'
 import { Person } from './person'
 import { Posts } from './posts'
-import { Box, SxProps } from '@mui/material'
-import { FC, ReactNode } from 'react'
 
 // types
 

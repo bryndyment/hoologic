@@ -1,12 +1,12 @@
 'use client'
 
-import { useAppContext } from '../hooks/useAppContext'
-import { PATHNAME_ABOUT } from '../utilities/general'
-import { BLACK, RED, WHITE } from '../utilities/styles'
 import { Box, Link } from '@mui/material'
 import RouterLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
+import { useAppContext } from '../hooks/useAppContext'
+import { PATHNAME_ABOUT } from '../utilities/general'
+import { BLACK, RED, WHITE } from '../utilities/styles'
 
 // constants
 
@@ -30,9 +30,9 @@ export const Logo: FC = () => {
 
   const handleClick = () => setPostPosition({ left: -314, top: 114 })
 
-  return pathname === PATHNAME_ABOUT ? (
-    <Box component="span">{LOGO}</Box>
-  ) : (
+  if (pathname === PATHNAME_ABOUT) return <Box component="span">{LOGO}</Box>
+
+  return (
     <Link component={RouterLink} href={PATHNAME_ABOUT} onClick={handleClick} sx={{ ':hover': { transform: 'scale(0.96)', transition: 'transform 0.1s' } }}>
       {LOGO}
     </Link>

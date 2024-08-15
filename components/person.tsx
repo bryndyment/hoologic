@@ -1,12 +1,12 @@
 'use client'
 
-import { useAppContext } from '../hooks/useAppContext'
-import { PATHNAME_PERSON } from '../utilities/general'
 import { Box, Link } from '@mui/material'
 // import Image from 'next/image'
 import RouterLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
+import { useAppContext } from '../hooks/useAppContext'
+import { PATHNAME_PERSON } from '../utilities/general'
 
 // constants
 

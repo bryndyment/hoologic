@@ -2,13 +2,13 @@
 
 // https://github.com/mui/material-ui/blob/master/examples/material-ui-nextjs-ts/src/components/ThemeRegistry/ThemeRegistry.tsx
 
-import { THEME } from '../../utilities/theme'
-import NextAppDirEmotionCacheProvider from './emotionCache'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import * as React from 'react'
+import { THEME } from '../../utilities/theme'
+import NextAppDirEmotionCacheProvider from './emotionCache'
 
-export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
+const ThemeRegistry = ({ children }: { children: React.ReactNode }) => {
   return (
     <NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>
       <ThemeProvider theme={THEME}>
@@ -19,3 +19,5 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
     </NextAppDirEmotionCacheProvider>
   )
 }
+
+export default ThemeRegistry
