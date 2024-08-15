@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { APP_CONTEXT } from '../components/appContext'
+import { APP_CONTEXT } from '../comp/appContext'
 
 // hooks
 
