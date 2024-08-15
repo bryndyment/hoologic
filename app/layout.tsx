@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { FC, ReactNode } from 'react'
-import type { _Post } from '../utilities/types'
+import type { _Post } from '../util/types'
 import { All } from '../comp/all'
 import { AppContext } from '../comp/appContext'
 import ThemeRegistry from '../comp/mui/themeRegistry'
-import { POSTS_QUERY } from '../utilities/general'
-import { SANITY_CLIENT } from '../utilities/sanity'
+import { POSTS_QUERY } from '../util/general'
+import { SANITY_CLIENT } from '../util/sanity'
 
 // types
 

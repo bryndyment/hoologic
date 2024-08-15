@@ -5,7 +5,7 @@
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import * as React from 'react'
-import { THEME } from '../../utilities/theme'
+import { THEME } from '../../util/theme'
 import NextAppDirEmotionCacheProvider from './emotionCache'
 
 const ThemeRegistry = ({ children }: { children: React.ReactNode }) => {

@@ -5,8 +5,8 @@ import RouterLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
 import { useAppContext } from '../hooks/useAppContext'
-import { PATHNAME_ABOUT } from '../utilities/general'
-import { BLACK, RED, WHITE } from '../utilities/styles'
+import { PATHNAME_ABOUT } from '../util/general'
+import { BLACK, RED, WHITE } from '../util/styles'
 
 // constants
 

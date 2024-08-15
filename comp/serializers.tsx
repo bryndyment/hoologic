@@ -3,7 +3,7 @@ import { getImageDimensions } from '@sanity/asset-utils'
 // import Image from 'next/image'
 import Link from 'next/link'
 import React, { FC, ReactNode } from 'react'
-import { sanityImageUrl } from '../utilities/sanity'
+import { sanityImageUrl } from '../util/sanity'
 
 // types
 

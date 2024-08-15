@@ -1,9 +1,9 @@
 import type { Metadata } from 'next/types'
 import { FC } from 'react'
-import type { _Post } from '../../utilities/types'
+import type { _Post } from '../../util/types'
 import { Post } from '../../comp/post'
-import { POSTS_QUERY } from '../../utilities/general'
-import { SANITY_CLIENT } from '../../utilities/sanity'
+import { POSTS_QUERY } from '../../util/general'
+import { SANITY_CLIENT } from '../../util/sanity'
 
 // types
 

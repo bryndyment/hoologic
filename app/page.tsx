@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 import { FC } from 'react'
-import { PATHNAME_ROOT } from '../utilities/general'
+import { PATHNAME_ROOT } from '../util/general'
 
 // metadata
 

@@ -2,9 +2,9 @@
 
 import { Box, SxProps } from '@mui/material'
 import { FC, ReactNode } from 'react'
-import type { _Post } from '../utilities/types'
+import type { _Post } from '../util/types'
 import { useAppContext } from '../hooks/useAppContext'
-import { WIDTH } from '../utilities/styles'
+import { WIDTH } from '../util/styles'
 import { Company } from './company'
 import { Location } from './location'
 import { Logo } from './logo'

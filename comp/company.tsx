@@ -5,9 +5,9 @@ import { blueGrey } from '@mui/material/colors'
 import RouterLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
-import { NOTO_SANS_JP } from '../utilities/fonts'
-import { PATHNAME_ROOT } from '../utilities/general'
-import { BLACK, WHITE } from '../utilities/styles'
+import { NOTO_SANS_JP } from '../util/fonts'
+import { PATHNAME_ROOT } from '../util/general'
+import { BLACK, WHITE } from '../util/styles'
 
 // constants
 
