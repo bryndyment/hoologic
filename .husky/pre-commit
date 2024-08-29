@@ -1,4 +1,11 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+protected_branches=("dev" "live")
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 
-npx lint-staged
+for branch in "${protected_branches[@]}"; do
+  if [ "$current_branch" = "$branch" ]; then
+    echo "error: commits to \`$branch\` branch disallowed"
+    exit 1
+  fi
+done
+
+exit 0
