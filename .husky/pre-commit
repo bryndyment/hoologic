@@ -8,4 +8,6 @@ for branch in "${protected_branches[@]}"; do
   fi
 done
 
+pnpx lint-staged
+
 exit 0
