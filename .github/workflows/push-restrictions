@@ -1,0 +1,22 @@
+name: Push Restrictions
+
+on:
+  push:
+    branches:
+      - dev
+      - live
+
+jobs:
+  protect:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Enforce push restrictions
+        run: |
+          if [[ "${{ github.actor }}" != "renovatebot" && "${{ github.ref }}" == "refs/heads/dev" ]]; then
+            echo "Pushes to `dev` branch disallowed (except `renovatebot`)"
+            exit 1
+          elif [[ "${{ github.ref }}" == "refs/heads/live" ]]; then
+            echo "Pushes to `live` branch disallowed"
+            exit 1
+          fi
