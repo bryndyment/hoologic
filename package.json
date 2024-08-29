@@ -40,15 +40,14 @@
     "typescript": "5.5.4",
     "typescript-eslint": "8.3.0"
   },
-  "overrides": {
-    "eslint-config-standard": {
-      "eslint": "^9"
-    },
-    "eslint-plugin-react-hooks": {
-      "eslint": "^9"
-    },
-    "react-masonry-component": {
-      "react": "^18"
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "eslint-config-standard>eslint": "^9",
+        "eslint-plugin-import>eslint": "^9",
+        "eslint-plugin-react-hooks>eslint": "^9",
+        "react-masonry-component>react": "^18"
+      }
     }
   },
   "scripts": {
