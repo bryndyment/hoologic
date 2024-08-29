@@ -1,9 +1,0 @@
-*.min.js
-
-.cache
-build
-node_modules
-public
-server
-static
-tsconfig.json
