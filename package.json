@@ -1,7 +1,6 @@
 {
   "name": "hoologic",
   "author": "Bryn Dyment <bryndyment@gmail.com>",
-  "description": "Hoo Logic",
   "private": true,
   "version": "1.0.0",
   "dependencies": {
