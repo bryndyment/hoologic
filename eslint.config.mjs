@@ -44,8 +44,5 @@ export default [
         version: 'detect'
       }
     }
-  },
-  {
-    ignores: ['.cache', '.next', 'node_modules', 'public', 'static']
   }
 ]
