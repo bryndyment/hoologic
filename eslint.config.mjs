@@ -38,5 +38,8 @@ export default [
         version: 'detect'
       }
     }
+  },
+  {
+    ignores: ['.next']
   }
 ]
