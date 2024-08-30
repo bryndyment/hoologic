@@ -9,5 +9,3 @@ for branch in "${protected_branches[@]}"; do
 done
 
 pnpx lint-staged
-
-exit 0
