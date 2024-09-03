@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 import { getImageDimensions } from '@sanity/asset-utils'
 // import Image from 'next/image'
 import Link from 'next/link'
-import React, { FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import { sanityImageUrl } from '../util/sanity'
 
 // types

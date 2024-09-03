@@ -2,7 +2,7 @@
 
 import { Box, SxProps, type Theme } from '@mui/material'
 import { PortableText } from '@portabletext/react'
-import React, { FC, RefObject, useEffect, useState } from 'react'
+import { FC, RefObject, useEffect, useState } from 'react'
 import type { _Position, _Post } from '../util/types'
 import { useAppContext } from '../hooks/useAppContext'
 import { SX_CONTENT, WHITE, WIDTH } from '../util/styles'

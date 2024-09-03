@@ -2,7 +2,7 @@
 
 import { Box } from '@mui/material'
 import { usePathname } from 'next/navigation'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import Masonry from 'react-masonry-component'
 import type { _Post } from '../util/types'
 import { PATHNAME_ABOUT, PATHNAME_PERSON, PATHNAME_ROOT } from '../util/general'
