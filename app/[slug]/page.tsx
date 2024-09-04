@@ -25,8 +25,8 @@ export const generateMetadata = async ({ params: { slug } }: _generateMetadataPa
     alternates: {
       canonical: `/${slug}`
     },
-    description: `${post.title} | Hoo Logic`,
-    title: `${post.title} | Hoo Logic`
+    description: `${post.title} : Hoo Logic`,
+    title: `${post.title} : Hoo Logic`
   }
 }
 
