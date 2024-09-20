@@ -1,4 +1,4 @@
-protected_branches=("dev" "live")
+protected_branches=("main" "release")
 current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 
 for branch in "${protected_branches[@]}"; do
