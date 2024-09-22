@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Enforce `main` branch
         run: |
-          if [ "${GITHUB_REF#refs/heads/}" != 'main' ]; then
+          if [ "${{ github.event.ref }}" != 'refs/heads/main' ]; then
             echo 'Error: workflow can only be used from `main` branch'
             exit 1
           fi
