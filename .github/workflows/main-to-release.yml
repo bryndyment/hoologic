@@ -25,4 +25,3 @@ jobs:
           git checkout release
           git merge --ff-only origin/main
           git push origin release
-          echo '✓'
