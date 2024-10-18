@@ -50,9 +50,9 @@
     }
   },
   "scripts": {
-    "build": "npm run clean && next build",
+    "build": "pnpm run clean && next build",
     "clean": "rm -rf .next",
-    "dev": "npm run clean && next dev",
+    "dev": "pnpm run clean && next dev",
     "prepare": "husky",
     "start": "next start"
   }
