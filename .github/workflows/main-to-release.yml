@@ -13,18 +13,16 @@ jobs:
             echo 'Error: workflow can only be used from `main` branch'
             exit 1
           fi
-        echo '✓'
 
       - name: Check out `main` branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.TOKEN_REPO }}
-        echo '✓'
 
       - name: Update `release` branch
         run: |
           git checkout release
           git merge --ff-only origin/main
           git push origin release
-        echo '✓'
+          echo '✓'
