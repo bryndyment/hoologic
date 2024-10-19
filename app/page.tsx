@@ -1,12 +1,11 @@
 import type { Metadata } from 'next/types'
 import { FC } from 'react'
-import { PATHNAME_ROOT } from '../util/general'
 
 // metadata
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: PATHNAME_ROOT
+    canonical: ''
   },
   description: 'Hoo Logic : React + TypeScript',
   title: 'Hoo Logic : React + TypeScript'
