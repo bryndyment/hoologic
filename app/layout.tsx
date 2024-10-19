@@ -14,7 +14,7 @@ type _RootLayoutProps = { children: ReactNode }
 // metadata
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.hoologic.io')
+  metadataBase: new URL('https://hoologic.io')
 }
 
 // components
