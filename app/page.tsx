@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/test'
+    canonical: '/'
   },
   description: 'Hoo Logic : React + TypeScript',
   title: 'Hoo Logic : React + TypeScript'
