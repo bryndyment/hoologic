@@ -7,12 +7,14 @@ import { SANITY_CLIENT } from '../../util/sanity'
 
 // types
 
-type _PostPageProps = { params: { slug: string } }
-type _generateMetadataParams = { params: { slug: string } }
+type _PostPageProps = { params: Promise<{ slug: string }> }
+type _generateMetadataParams = { params: Promise<{ slug: string }> }
 
 // metadata
 
-export const generateMetadata = async ({ params: { slug } }: _generateMetadataParams): Promise<Metadata> => {
+export const generateMetadata = async (props: _generateMetadataParams): Promise<Metadata> => {
+  const { slug } = await props.params
+
   const posts = await SANITY_CLIENT.fetch<_Post[]>(POSTS_QUERY)
 
   const post = posts.find(post => post.slug.current === decodeURIComponent(slug))
@@ -40,7 +42,9 @@ export const generateStaticParams = async () => {
 
 // components
 
-const PostPage: FC<_PostPageProps> = async ({ params: { slug } }) => {
+const PostPage: FC<_PostPageProps> = async props => {
+  const { slug } = await props.params
+
   const posts = await SANITY_CLIENT.fetch<_Post[]>(POSTS_QUERY)
 
   const post = posts.find(post => post.slug.current === decodeURIComponent(slug))
