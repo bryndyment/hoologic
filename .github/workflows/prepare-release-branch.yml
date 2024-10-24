@@ -42,3 +42,7 @@ jobs:
           git checkout release
           git reset --hard $COMMIT_HASH
           git push -f origin release
+
+      - name: Trigger deploy hook
+        run: |
+          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
