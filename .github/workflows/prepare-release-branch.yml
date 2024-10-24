@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.TOKEN_REPO_WORKFLOW }}
+          token: ${{ secrets.WORKFLOW }}
 
       - name: Set commit hash
         run: |
@@ -42,3 +42,7 @@ jobs:
           git checkout release
           git reset --hard $COMMIT_HASH
           git push -f origin release
+
+      - name: Trigger deploy hook
+        run: |
+          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
