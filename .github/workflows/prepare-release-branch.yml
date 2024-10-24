@@ -39,5 +39,6 @@ jobs:
 
       - name: Update `release` branch
         run: |
-          git checkout -B release $COMMIT_HASH
+          git checkout release
+          git reset --hard $COMMIT_HASH
           git push -f origin release
