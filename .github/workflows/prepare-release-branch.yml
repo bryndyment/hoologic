@@ -8,7 +8,7 @@ on:
         required: false
 
 jobs:
-  main-to-release:
+  prepare-release-branch:
     runs-on: ubuntu-latest
 
     steps:
