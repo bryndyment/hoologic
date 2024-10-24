@@ -12,13 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Enforce `main` branch
-        run: |
-          if [ "${{ github.event.ref }}" != 'refs/heads/main' ]; then
-            echo 'Error: workflow can only be used from `main` branch'
-            exit 1
-          fi
-
       - name: Check out `main` branch
         uses: actions/checkout@v4
         with:
@@ -42,7 +35,3 @@ jobs:
           git checkout release
           git reset --hard $COMMIT_HASH
           git push -f origin release
-
-      - name: Trigger deploy hook
-        run: |
-          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
