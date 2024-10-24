@@ -1,0 +1,43 @@
+name: Prepare `release` branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_hash:
+        description: 'Optional commit hash'
+        required: false
+
+jobs:
+  main-to-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Enforce `main` branch
+        run: |
+          if [ "${{ github.event.ref }}" != 'refs/heads/main' ]; then
+            echo 'Error: workflow can only be used from `main` branch'
+            exit 1
+          fi
+
+      - name: Check out `main` branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.TOKEN_REPO }}
+
+      - name: Set commit hash
+        run: |
+          if [ -z "${{ github.event.inputs.commit_hash }}" ]; then
+            echo "COMMIT_HASH=$(git rev-parse origin/main)" >> $GITHUB_ENV
+          else
+            if ! git merge-base --is-ancestor ${{ github.event.inputs.commit_hash }} origin/main; then
+              echo 'Error: invalid commit hash'
+              exit 1
+            fi
+            echo "COMMIT_HASH=${{ github.event.inputs.commit_hash }}" >> $GITHUB_ENV
+          fi
+
+      - name: Update `release` branch
+        run: |
+          git checkout -B release $COMMIT_HASH
+          git push -f origin release
