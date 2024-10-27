@@ -1,22 +1,11 @@
-#!/bin/sh
-set -e
-
-echo "Pre-commit hook started"
-
-protected_branches=("main" "release")
+protected_branches=("deploy" "main")
 current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
-
-echo "Current branch: $current_branch"
 
 for branch in "${protected_branches[@]}"; do
   if [ "$current_branch" = "$branch" ]; then
-    echo "error: commits to \`$branch\` branch disallowed"
+    echo "error: local commits to \`$branch\` branch disallowed"
     exit 1
   fi
 done
 
-echo "Branch check passed"
-
 pnpx lint-staged
-
-echo "Pre-commit hook completed successfully"
