@@ -1,5 +1,6 @@
 'use client'
 
+import { useContextGuard } from '@hoologic/use-context-guard'
 import { createContext, Dispatch, FC, ReactNode, RefObject, SetStateAction, useMemo, useRef, useState } from 'react'
 import type { _Position } from '../util/types'
 
@@ -15,7 +16,11 @@ type _AppContextProps = { children: ReactNode }
 
 // context
 
-export const APP_CONTEXT = createContext<_AppContext | null>(null)
+const APP_CONTEXT = createContext<_AppContext | null>(null)
+
+// hooks
+
+export const useAppContext = () => useContextGuard(APP_CONTEXT)
 
 // components
 

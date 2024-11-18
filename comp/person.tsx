@@ -5,8 +5,8 @@ import { Box, Link } from '@mui/material'
 import RouterLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
-import { useAppContext } from '../hooks/useAppContext'
 import { PATHNAME_PERSON } from '../util/general'
+import { useAppContext } from './appContext'
 
 // constants
 

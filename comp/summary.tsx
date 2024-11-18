@@ -5,9 +5,9 @@ import { getImageDimensions } from '@sanity/asset-utils'
 import RouterLink from 'next/link'
 import { Dispatch, FC, MouseEvent, ReactNode, SetStateAction, useState } from 'react'
 import type { _Post } from '../util/types'
-import { useAppContext } from '../hooks/useAppContext'
 import { sanityImageUrl } from '../util/sanity'
 import { BLACK, SX_CONTENT, WHITE } from '../util/styles'
+import { useAppContext } from './appContext'
 import { SERIALIZERS } from './serializers'
 
 // types

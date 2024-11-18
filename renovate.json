@@ -3,5 +3,11 @@
   "automergeType": "branch",
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "enabled": false,
+      "matchPackageNames": ["eslint"]
+    }
   ]
 }
