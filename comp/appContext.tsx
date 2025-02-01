@@ -7,7 +7,7 @@ import type { _Position } from '../util/types'
 // types
 
 type _AppContext = {
-  allRef: RefObject<HTMLDivElement>
+  allRef: RefObject<HTMLDivElement | null>
   postPosition?: _Position
   setPostPosition: Dispatch<SetStateAction<_Position | undefined>>
 }
@@ -25,7 +25,7 @@ export const useAppContext = () => useContextGuard(APP_CONTEXT)
 // components
 
 export const AppContext: FC<_AppContextProps> = ({ children }) => {
-  const allRef = useRef(null)
+  const allRef = useRef<HTMLDivElement>(null)
   const [postPosition, setPostPosition] = useState<_Position>()
 
   const appContext = useMemo(() => ({ allRef, postPosition, setPostPosition }), [postPosition])
