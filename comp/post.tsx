@@ -57,7 +57,7 @@ const SX_POST_CONTENT_FN = ({ breakpoints }: Theme) => ({
 
 // functions
 
-const getLeftOffset = (allRef: RefObject<HTMLDivElement>) => {
+const getLeftOffset = (allRef: RefObject<HTMLDivElement | null>) => {
   if (!allRef.current) return 0
 
   const width = allRef.current.offsetWidth
@@ -69,7 +69,7 @@ const getLeftOffset = (allRef: RefObject<HTMLDivElement>) => {
   return `${(document.body.offsetWidth - width) / 2}px`
 }
 
-const styles = (allRef: RefObject<HTMLDivElement>, mounted: boolean, postPosition?: _Position) => {
+const styles = (allRef: RefObject<HTMLDivElement | null>, mounted: boolean, postPosition?: _Position) => {
   if (postPosition) {
     if (mounted) {
       return { left: getLeftOffset(allRef), top: '114px' }
