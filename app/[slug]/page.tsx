@@ -7,8 +7,8 @@ import { SANITY_CLIENT } from '../../util/sanity'
 
 // types
 
-type _PostPageProps = { params: Promise<{ slug: string }> }
 type _generateMetadataParams = { params: Promise<{ slug: string }> }
+type _PostPageProps = { params: Promise<{ slug: string }> }
 
 // metadata
 
