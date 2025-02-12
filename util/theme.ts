@@ -1,7 +1,6 @@
 'use client'
 
 import { createTheme } from '@mui/material'
-import { blueGrey } from '@mui/material/colors'
 import { BLACK } from './styles'
 
 // constants
@@ -36,6 +35,6 @@ export const THEME = createTheme({
       }
     }
   },
-  palette: { background: { default: blueGrey[50] } },
+  palette: { background: { default: '#ece6dc' } },
   typography: { fontFamily: 'lucida grande, lucida sans, -apple-system, sans-serif' }
 })
