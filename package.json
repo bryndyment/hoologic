@@ -12,7 +12,7 @@
     "@sanity/asset-utils": "2.2.1",
     "@sanity/image-url": "1.1.0",
     "classnames": "2.5.1",
-    "next": "15.2.2",
+    "next": "15.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-masonry-component": "6.3.0",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "1.2.7",
-    "@next/eslint-plugin-next": "15.2.2",
+    "@next/eslint-plugin-next": "15.2.3",
     "@portabletext/react": "3.2.1",
     "@sanity/client": "6.28.3",
     "@types/lodash": "4.17.16",
